@@ -1,4 +1,13 @@
 import "./Main.css";
+import SearchResults from "../SearchResults/SearchResults";
+import About from "../About/About";
 function Main() {
-  return <main></main>;
+  return (
+    <main>
+      <SearchResults />
+      <About />
+    </main>
+  );
 }
+
+export default Main;
