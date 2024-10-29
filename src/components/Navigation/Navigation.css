@@ -9,15 +9,17 @@
 .nav__sitename {
   color: #fff;
   font-size: 20px;
+  font-family: "Roboto-Slab", "Courier New", Courier, monospace;
   font-weight: 700;
-  /* line-height: 1.2; */
-
+  line-height: 1;
   margin: 0;
-  padding: 12px 0;
+  padding: 10px 0;
 }
 .nav__links {
   display: flex;
   align-items: center;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
 }
 .nav__link {
   color: #fff;
@@ -28,6 +30,7 @@
   font-weight: 500;
   line-height: 24px;
   margin-left: 76px;
+  cursor: pointer;
 }
 
 .nav__current-user {
@@ -41,6 +44,7 @@
   border: 1px solid #fff;
   border-radius: 100px;
   margin-left: 64px;
+  cursor: pointer;
 }
 .nav__current-user_name {
   background-color: transparent;
@@ -52,13 +56,14 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 100%;
+  margin: 0;
+  font-weight: 500;
 }
 
 .nav__current-user_name_signout {
   background-color: transparent;
   background-image: url(../../assets/logout.svg);
-  width: 24px;
-  height: 24px;
+
   background-repeat: no-repeat;
   background-size: cover;
   padding: 12px;

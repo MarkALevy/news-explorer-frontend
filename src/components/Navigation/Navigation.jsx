@@ -8,10 +8,10 @@ function Navigation() {
       <div className="nav__links">
         <button className="nav__link">Home</button>
         <button className="nav__link">Saved articles</button>
-        <div className="nav__current-user">
-          <button className="nav__current-user_name">Elise </button>
-          <button className="nav__current-user_name_signout"></button>
-        </div>
+        <button className="nav__current-user">
+          <p className="nav__current-user_name">Elise</p>
+          <div className="nav__current-user_name_signout"></div>
+        </button>
       </div>
     </nav>
   );
