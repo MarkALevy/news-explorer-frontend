@@ -1,0 +1,67 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  padding: 20px 100px;
+  box-shadow: 0px -1px 0px 0px #ffffff33 inset;
+}
+
+.nav__sitename {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  /* line-height: 1.2; */
+
+  margin: 0;
+  padding: 12px 0;
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+}
+.nav__link {
+  color: #fff;
+  background-color: transparent;
+  border-style: none;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-left: 76px;
+}
+
+.nav__current-user {
+  background-color: transparent;
+  max-width: 320px;
+  font-size: 18px;
+  padding: 12px 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  margin-left: 64px;
+}
+.nav__current-user_name {
+  background-color: transparent;
+  line-height: 24px;
+  padding: 0;
+  border-style: none;
+  color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.nav__current-user_name_signout {
+  background-color: transparent;
+  background-image: url(../../assets/logout.svg);
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 12px;
+  margin-left: 16px;
+  border-style: none;
+}
