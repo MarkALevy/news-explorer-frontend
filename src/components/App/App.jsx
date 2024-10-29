@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
@@ -9,6 +9,24 @@ import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [activeModal, setActiveModal] = useState("");
+
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   return (
     <div className="page">
