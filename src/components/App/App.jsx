@@ -6,18 +6,32 @@ import SavedNews from "../SavedNews/SavedNews.jsx";
 import Footer from "../Footer/Footer.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import LoginForm from "../LoginForm/LoginForm.jsx";
+import RegisterForm from "../RegisterForm/Registerform.jsx";
+import InfoPopup from "../InfoPopup/InfoPopup.jsx";
 import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [activeModal, setActiveModal] = useState("login");
+  const [activeModal, setActiveModal] = useState("success");
 
   const handleLogin = ({ email, password }) => {
     console.log(activeModal);
   };
 
+  const handleRegistration = ({ email, password, name }) => {
+    console.log(activeModal);
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const handleRegisterClick = () => {
+    setActiveModal("register");
+  };
+
+  const handleLoginClick = () => {
+    setActiveModal("login");
   };
 
   useEffect(() => {
@@ -60,12 +74,29 @@ function App() {
         </Routes>
         <Footer />
       </div>
+      {activeModal === "register" && (
+        <RegisterForm
+          isOpen={activeModal === "register"}
+          onClose={closeActiveModal}
+          handleLoginClick={handleLoginClick}
+          onSubmit={handleRegistration}
+        />
+      )}
       {activeModal === "login" && (
         <LoginForm
           isOpen={activeModal === "login"}
           onClose={closeActiveModal}
-          // handleRegisterClick={handleRegisterClick}
+          handleRegisterClick={handleRegisterClick}
           onSubmit={handleLogin}
+        />
+      )}
+      {activeModal === "success" && (
+        <InfoPopup
+          isOpen={activeModal === "success"}
+          title="Registration successfully completed!"
+          buttonText="Sign in"
+          onClose={closeActiveModal}
+          handleLoginClick={handleLoginClick}
         />
       )}
     </div>

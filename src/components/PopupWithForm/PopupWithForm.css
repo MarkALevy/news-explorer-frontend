@@ -15,9 +15,10 @@
 }
 
 .modal__title {
-  margin: 0 0 22px 0;
+  margin: 0 0 9px 0;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 24px;
+  line-height: 32px;
   font-weight: 900;
   text-align: left;
 }
@@ -54,11 +55,12 @@
 }
 
 .modal__label {
-  margin-top: 22px;
+  margin-top: 13px;
   display: flex;
   flex-direction: column;
   font-family: "Inter", Arial, sans-serif;
   font-size: 12px;
+  line-height: 14px;
   font-weight: 400;
   color: #2f71e5;
 }
@@ -87,17 +89,33 @@
   outline: none;
   border-bottom: 1px solid #000;
 }
+.modal__input-error {
+  visibility: hidden;
+}
+
+.modal__input-error_visible {
+  color: #ff0000;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  font-family: "Inter", Arial, sans-serif;
+  text-align: left;
+  visibility: visible;
+}
+
 .modal__error {
-  margin-top: 9px;
-  height: 30px;
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  visibility: hidden;
 }
 
 .modal__error_visible {
   color: #ff0000;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 400;
   text-align: center;
+  visibility: visible;
 }
 
 .modal__submit {
@@ -138,7 +156,8 @@
   border-style: none;
   font-family: "Inter", Arial, sans-serif;
   font-size: 14px;
-  padding: 3px 0 0 0;
+  line-height: 16px;
+  padding: 0;
   font-weight: 400;
   text-align: center;
   color: #2f71e5;

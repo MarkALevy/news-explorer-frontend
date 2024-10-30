@@ -16,7 +16,9 @@ function PopupWithForm({
         <button onClick={onClose} type="button" className="modal__close" />
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
-          <span className="modal__error"></span>
+          <span className="modal__error modal__error_visible">
+            error message
+          </span>
           <button type="submit" className="modal__submit">
             {buttonText}
           </button>

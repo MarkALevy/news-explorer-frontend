@@ -1,0 +1,22 @@
+.modal__content_info {
+  padding: 45px 80px 45px 35px;
+  max-width: 315px;
+}
+
+.modal__title_info {
+  line-height: 28px;
+}
+
+.modal__login-btn {
+  background-color: transparent;
+  border-style: none;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: left;
+  color: #2f71e5;
+  margin-top: 5px;
+  padding: 0;
+  cursor: pointer;
+}
