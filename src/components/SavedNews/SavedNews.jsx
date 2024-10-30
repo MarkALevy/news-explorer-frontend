@@ -1,7 +1,7 @@
-// import "./SavedNews.css";
+import "./SavedNews.css";
 
 function SavedNews() {
-  return <>Saved News!!!</>;
+  return <div className="saved-news__container"></div>;
 }
 
 export default SavedNews;

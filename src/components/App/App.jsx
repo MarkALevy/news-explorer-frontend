@@ -36,6 +36,12 @@ function App() {
     setActiveModal("login");
   };
 
+  const onLogout = () => {
+    // localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    // setCurrentUser(null);
+  };
+
   useEffect(() => {
     if (!activeModal) return;
     const handleEscClose = (e) => {
@@ -52,18 +58,27 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header
-          isLoggedIn={isLoggedIn}
-          currentPage={currentPage}
-          handleLoginClick={handleLoginClick}
-        />
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Header
+                  isLoggedIn={isLoggedIn}
+                  currentPage={currentPage}
+                  handleLoginClick={handleLoginClick}
+                  onLogout={onLogout}
+                />
+                <Main />
+              </>
+            }
+          />
+
           <Route
             path="/saved-news"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <SavedNewsHeader />
+                <SavedNewsHeader onLogout={onLogout} />
                 <SavedNews />
               </ProtectedRoute>
             }

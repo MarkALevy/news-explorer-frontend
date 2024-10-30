@@ -1,27 +1,46 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navigation.css";
-
-function Navigation({ isLoggedIn, currentPage, handleLoginClick }) {
+function Navigation({ isLoggedIn, currentPage, handleLoginClick, onLogout }) {
   return (
-    <nav className="nav">
-      <p className="nav__sitename">NewsExplorer</p>
+    <nav className={`nav nav_${currentPage}`}>
+      <Link to="/" className="nav__sitename_link">
+        <p className={`nav__sitename nav__sitename_${currentPage}`}>
+          NewsExplorer
+        </p>
+      </Link>
       <div className="nav__links">
-        <button className="nav__link nav__link_home  nav__link_current ">
-          Home
-        </button>
+        <Link to="/">
+          <button
+            className={`nav__link nav__link_${currentPage} nav__link_to-home nav__link_current nav__link_current_${currentPage}`}
+          >
+            Home
+          </button>
+        </Link>
         {isLoggedIn ? (
           <div className="nav__links nav__logged-in">
-            <button className="nav__link nav__link_saved">
-              Saved articles
-            </button>
-            <button className="nav__current-user">
-              <p className="nav__current-user_name">Elise</p>
-              <div className="nav__current-user_name_signout"></div>
+            <Link to="/saved-news">
+              <button
+                className={`nav__link nav__link_${currentPage} nav__link_to-saved`}
+              >
+                Saved articles
+              </button>
+            </Link>
+            <button
+              className={`nav__current-user nav__current-user_${currentPage}`}
+              onClick={onLogout}
+            >
+              <p
+                className={`nav__current-user_name nav__current-user_name_${currentPage} `}
+              >
+                Elise
+              </p>
+              <div
+                className={`nav__current-user_name_signout nav__current-user_name_signout_${currentPage}`}
+              ></div>
             </button>
           </div>
         ) : (
           <div className="nav__links nav__logged-out">
-            {/* <button className="nav__link nav__link_home">Home</button> */}
             <button className="nav__signin" onClick={handleLoginClick}>
               Sign in
             </button>
