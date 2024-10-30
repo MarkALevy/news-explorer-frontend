@@ -39,6 +39,7 @@
   font-family: "Roboto", Arial, sans-serif;
   padding: 21px 24px;
   box-shadow: 0px 5px 15px 0px #0e1a3933;
+  caret-color: #2f71e5;
 }
 
 .search-form__text-box::placeholder {
@@ -47,6 +48,10 @@
   font-weight: 400;
   line-height: 22px;
   color: #b6bcbf;
+}
+
+.search-form__text-box:focus {
+  outline: none;
 }
 
 .search-form__btn {
@@ -62,6 +67,7 @@
   font-weight: 500;
   font-family: "Roboto", Arial, sans-serif;
   cursor: pointer;
+  transition: background-color 0.2s linear 0;
 }
 
 .search-form__btn:hover {

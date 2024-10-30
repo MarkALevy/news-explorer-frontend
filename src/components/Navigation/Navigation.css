@@ -22,22 +22,31 @@
   font-weight: 500;
 }
 .nav__link {
-  color: #fff;
+  color: #b6bcbf;
   background-color: transparent;
   border-style: none;
   padding: 0;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
-  margin-left: 76px;
+  margin-left: 33px;
   cursor: pointer;
 }
 
-/* .nav__link_current {
+.nav__link_home {
+  width: 70px;
+}
+
+.nav__link_saved {
+  width: 178px;
+}
+
+.nav__link_current {
+  color: #fff;
   padding-top: 28px;
   padding-bottom: 25px;
   border-bottom: 3px solid #fff;
-} */
+}
 
 .nav__current-user {
   background-color: transparent;
@@ -49,7 +58,7 @@
   align-items: center;
   border: 1px solid #fff;
   border-radius: 100px;
-  margin-left: 64px;
+  margin-left: 32px;
   cursor: pointer;
 }
 .nav__current-user_name {
