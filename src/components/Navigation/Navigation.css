@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   height: 40px;
-  padding: 20px 100px;
+  padding: 20px 104px;
   box-shadow: 0px -1px 0px 0px #ffffff33 inset;
 }
 
@@ -32,6 +32,12 @@
   margin-left: 76px;
   cursor: pointer;
 }
+
+/* .nav__link_current {
+  padding-top: 28px;
+  padding-bottom: 25px;
+  border-bottom: 3px solid #fff;
+} */
 
 .nav__current-user {
   background-color: transparent;

@@ -30,13 +30,15 @@
 }
 .search-form__text-box {
   border-radius: 100px;
-  border-style: none;
+  border: 1px solid #d1d2d6;
+  backdrop-filter: blur(8px);
   width: 559px;
   height: 22px;
   font-size: 16px;
   font-weight: 400;
   font-family: "Roboto", Arial, sans-serif;
   padding: 21px 24px;
+  box-shadow: 0px 5px 15px 0px #0e1a3933;
 }
 
 .search-form__text-box::placeholder {
@@ -60,4 +62,12 @@
   font-weight: 500;
   font-family: "Roboto", Arial, sans-serif;
   cursor: pointer;
+}
+
+.search-form__btn:hover {
+  background-color: #347eff;
+}
+
+.search-form__btn:active {
+  background-color: #2a65cc;
 }
