@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
-import SavedNews from "../SavedNews/SavedNews.jsx";
 import Footer from "../Footer/Footer.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import LoginForm from "../LoginForm/LoginForm.jsx";
 import RegisterForm from "../RegisterForm/Registerform.jsx";
 import InfoPopup from "../InfoPopup/InfoPopup.jsx";
+import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader.jsx";
+import SavedNews from "../SavedNews/SavedNews.jsx";
 import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [activeModal, setActiveModal] = useState("success");
+  const [activeModal, setActiveModal] = useState("");
+  const [currentPage, setCurrentPage] = useState("home");
 
   const handleLogin = ({ email, password }) => {
     console.log(activeModal);
@@ -50,13 +52,18 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header isLoggedIn={isLoggedIn} />
+        <Header
+          isLoggedIn={isLoggedIn}
+          currentPage={currentPage}
+          handleLoginClick={handleLoginClick}
+        />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route
             path="/saved-news"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <SavedNewsHeader />
                 <SavedNews />
               </ProtectedRoute>
             }

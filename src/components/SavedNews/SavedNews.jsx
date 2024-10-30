@@ -1,12 +1,7 @@
 // import "./SavedNews.css";
-import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
 function SavedNews() {
-  return (
-    <>
-      <SavedNewsHeader />
-    </>
-  );
+  return <>Saved News!!!</>;
 }
 
 export default SavedNews;

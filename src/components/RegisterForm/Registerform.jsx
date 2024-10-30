@@ -64,10 +64,7 @@ function RegisterForm({ onClose, isOpen, onSubmit, handleLoginClick }) {
           value={password}
           required
         />
-        <span
-          className="modal__input-error modal__input-error_visible"
-          id="password-error"
-        >
+        <span className="modal__input-error" id="password-error">
           password error message
         </span>
       </label>
@@ -83,10 +80,7 @@ function RegisterForm({ onClose, isOpen, onSubmit, handleLoginClick }) {
           value={name}
           required
         />
-        <span
-          className="modal__input-error modal__input-error_visible"
-          id="name-error"
-        >
+        <span className="modal__input-error" id="name-error">
           name error message
         </span>
       </label>

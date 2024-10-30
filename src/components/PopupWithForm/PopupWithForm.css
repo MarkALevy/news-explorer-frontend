@@ -136,12 +136,18 @@
   transition: background-color 0.2s linear 0;
 }
 
-.modal__submit:hover {
+.modal__submit:hover:not([disabled]) {
   background-color: #347eff;
 }
 
-.modal__submit:active {
+.modal__submit:active:not([disabled]) {
   background-color: #2a65cc;
+}
+
+.modal__submit_disabled {
+  background-color: #e6e8eb;
+  color: #b6bcbf;
+  cursor: default;
 }
 
 .modal__span {

@@ -17,7 +17,7 @@ function PopupWithForm({
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
           <span className="modal__error modal__error_visible">
-            error message
+            error message example
           </span>
           <button type="submit" className="modal__submit">
             {buttonText}

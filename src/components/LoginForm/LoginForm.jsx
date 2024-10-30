@@ -41,10 +41,7 @@ function LoginForm({ onClose, isOpen, onSubmit, handleRegisterClick }) {
           value={email}
           required
         />
-        <span
-          className="modal__input-error modal__input-error_visible"
-          id="email-error"
-        >
+        <span className="modal__input-error " id="email-error">
           email error message
         </span>
       </label>
