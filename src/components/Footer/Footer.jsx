@@ -8,11 +8,25 @@ function Footer() {
         <Link to="/">
           <button className="footer__link">Home</button>
         </Link>
-        <button className="footer__link">TripleTen</button>
-        <Link to="https://github.com/MarkALevy">
+        <Link
+          to="https://tripleten.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="footer__link">TripleTen</button>
+        </Link>
+        <Link
+          to="https://github.com/MarkALevy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <button className="footer__link-gh"></button>
         </Link>
-        <Link to="https://www.facebook.com/">
+        <Link
+          to="https://www.facebook.com/mark.levy1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <button className="footer__link-fb"></button>
         </Link>
       </div>
