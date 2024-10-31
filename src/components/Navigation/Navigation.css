@@ -40,12 +40,6 @@
   width: 178px;
 }
 
-/* .nav__link_current {
-  padding-top: 28px;
-  padding-bottom: 25px;
-  border-bottom: 3px solid;
-} */
-
 .nav__current-user {
   background-color: transparent;
   max-width: 320px;
@@ -132,7 +126,6 @@
   color: #1a1b22;
   border-color: #1a1b22;
 }
-/*  */
 
 .nav__sitename_home {
   color: #fff;

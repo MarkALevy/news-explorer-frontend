@@ -55,6 +55,21 @@ function App() {
     };
   }, [activeModal]);
 
+  
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleOverlayClick = (e) => {
+      if (e.target.classList.contains("modal_opened")) {
+        closeActiveModal();
+      }
+    };
+    document.addEventListener("click", handleOverlayClick);
+    return () => {
+      document.removeEventListener("click", handleOverlayClick);
+    };
+  }, [activeModal]);
+  
+
   return (
     <div className="page">
       <div className="page__content">
@@ -78,7 +93,7 @@ function App() {
             path="/saved-news"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <SavedNewsHeader onLogout={onLogout} currentPage="saved-news"/>
+                <SavedNewsHeader onLogout={onLogout} currentPage="saved-news" />
                 <SavedNews />
               </ProtectedRoute>
             }
