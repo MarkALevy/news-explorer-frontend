@@ -7,8 +7,8 @@ function Main() {
   return (
     <main>
       {/* <SearchResults /> */}
-      {/* <NothingFound /> */}
       <Preloader />
+      <NothingFound />
       <About />
     </main>
   );
