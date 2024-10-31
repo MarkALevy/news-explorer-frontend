@@ -1,9 +1,13 @@
 import "./SearchResults.css";
-import Preloader from "../Preloader/Preloader";
+
 import NewsCardList from "../NewsCardList/NewsCardList";
 
-function SearchResults() {
-  return <div className="search-results"></div>;
+function SearchResults({ isLoggedIn, currentPage }) {
+  return (
+    <div className="search-results">
+      <NewsCardList />
+    </div>
+  );
 }
 
 export default SearchResults;

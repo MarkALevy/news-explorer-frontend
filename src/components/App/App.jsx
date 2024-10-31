@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import Footer from "../Footer/Footer.jsx";
@@ -9,6 +15,8 @@ import RegisterForm from "../RegisterForm/Registerform.jsx";
 import InfoPopup from "../InfoPopup/InfoPopup.jsx";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader.jsx";
 import SavedNews from "../SavedNews/SavedNews.jsx";
+import { CurrentPageContext } from "../../contexts/CurrentPageContext.jsx";
+import { IsLoggedInContext } from "../../contexts/IsLoggedInContext.jsx";
 import "./App.css";
 
 function App() {
@@ -42,6 +50,16 @@ function App() {
     // setCurrentUser(null);
   };
 
+  let location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setCurrentPage("home");
+    } else if (location.pathname === "/saved-news") {
+      setCurrentPage("saved-news");
+    }
+  }, [location]);
+
   useEffect(() => {
     if (!activeModal) return;
     const handleEscClose = (e) => {
@@ -55,7 +73,6 @@ function App() {
     };
   }, [activeModal]);
 
-  
   useEffect(() => {
     if (!activeModal) return;
     const handleOverlayClick = (e) => {
@@ -68,75 +85,79 @@ function App() {
       document.removeEventListener("click", handleOverlayClick);
     };
   }, [activeModal]);
-  
 
   return (
-    <div className="page">
-      <div className="page__content">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header
-                  isLoggedIn={isLoggedIn}
-                  handleLoginClick={handleLoginClick}
-                  onLogout={onLogout}
-                  currentPage="home"
-                />
-                <Main />
-              </>
-            }
-          />
+    <IsLoggedInContext.Provider value={isLoggedIn}>
+      <CurrentPageContext.Provider value={currentPage}>
+        <div className="page">
+          <div className="page__content">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Header
+                      handleLoginClick={handleLoginClick}
+                      onLogout={onLogout}
+                    />
+                    <Main />
+                  </>
+                }
+              />
 
-          <Route
-            path="/saved-news"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <SavedNewsHeader onLogout={onLogout} currentPage="saved-news" />
-                <SavedNews />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="*"
-            element={
-              isLoggedIn ? (
-                <Navigate to="/saved-news" replace />
-              ) : (
-                <Navigate to="/" replace />
-              )
-            }
-          />
-        </Routes>
-        <Footer />
-      </div>
-      {activeModal === "register" && (
-        <RegisterForm
-          isOpen={activeModal === "register"}
-          onClose={closeActiveModal}
-          handleLoginClick={handleLoginClick}
-          onSubmit={handleRegistration}
-        />
-      )}
-      {activeModal === "login" && (
-        <LoginForm
-          isOpen={activeModal === "login"}
-          onClose={closeActiveModal}
-          handleRegisterClick={handleRegisterClick}
-          onSubmit={handleLogin}
-        />
-      )}
-      {activeModal === "success" && (
-        <InfoPopup
-          isOpen={activeModal === "success"}
-          title="Registration successfully completed!"
-          buttonText="Sign in"
-          onClose={closeActiveModal}
-          handleLoginClick={handleLoginClick}
-        />
-      )}
-    </div>
+              <Route
+                path="/saved-news"
+                element={
+                  <ProtectedRoute>
+                    <SavedNewsHeader
+                      onLogout={onLogout}
+                      currentPage="saved-news"
+                    />
+                    <SavedNews />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  isLoggedIn ? (
+                    <Navigate to="/saved-news" replace />
+                  ) : (
+                    <Navigate to="/" replace />
+                  )
+                }
+              />
+            </Routes>
+            <Footer />
+          </div>
+          {activeModal === "register" && (
+            <RegisterForm
+              isOpen={activeModal === "register"}
+              onClose={closeActiveModal}
+              handleLoginClick={handleLoginClick}
+              onSubmit={handleRegistration}
+            />
+          )}
+          {activeModal === "login" && (
+            <LoginForm
+              isOpen={activeModal === "login"}
+              onClose={closeActiveModal}
+              handleRegisterClick={handleRegisterClick}
+              onSubmit={handleLogin}
+            />
+          )}
+          {activeModal === "success" && (
+            <InfoPopup
+              isOpen={activeModal === "success"}
+              title="Registration successfully completed!"
+              buttonText="Sign in"
+              onClose={closeActiveModal}
+              handleLoginClick={handleLoginClick}
+            />
+          )}
+        </div>
+      </CurrentPageContext.Provider>
+    </IsLoggedInContext.Provider>
   );
 }
 

@@ -1,5 +1,9 @@
 import { Navigate } from "react-router-dom";
-function ProtectedRoute({ isLoggedIn, children }) {
+import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";
+import { useContext } from "react";
+
+function ProtectedRoute({ children }) {
+  const isLoggedIn = useContext(IsLoggedInContext);
   if (!isLoggedIn) {
     return <Navigate to="/" replace />;
   }

@@ -2,19 +2,69 @@ export const defaultNewsItems = [
   {
     _id: 0,
     source: {
-      id: null,
-      name: "CNBC",
+      name: "treehugger",
     },
-    author: null,
-    title:
-      "Elon Musk seeks to move $1 million voter lottery lawsuit to federal court",
-    description:
-      "Tesla CEO Elon Musk and his America PAC are supporting Donald Trump against Kamala Harris in the presidential election contest.",
-    url: "https://www.cnbc.com/2024/10/31/elon-musk-seeks-to-move-1-million-voter-lottery-lawsuit-to-federal-court.html",
-    urlToImage:
-      "https://image.cnbcfm.com/api/v1/image/108050300-1729512106247-gettyimages-2178881547-776227763_swensen_elon0137.jpeg?v=1729512153&w=1920&h=1080",
-    publishedAt: "2024-10-31T12:33:16Z",
+
+    title: "Everyone Needs a Special 'Sit Spot' in Nature",
+    urlToImage: ".",
+    publishedAt: "November 4, 2020",
+    content: `Ever since I read Richard Louv's influential book, "Last Child in the Woods," the idea of having a special "sit spot" has stuck with me. This advice, which Louv attributes to nature educator Jon Young, is for both adults and children to find...`,
+    isLiked: false,
+    keyword: "Nature",
+  },
+  {
+    _id: 1,
+    source: {
+      name: "national geographic",
+    },
+
+    title: "Nature makes you better",
+    urlToImage: ".",
+    publishedAt: "February 19, 2019",
     content:
-      "Elon Musk and his political action committee are seeking to move the Philadelphia District Attorney's lawsuit targeting their $1 million swing state voter lottery to federal court.\r\nLawyers for Musk … [+838 chars]",
+      "We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.",
+    isLiked: true,
+    keyword: "Nature",
+  },
+  {
+    _id: 2,
+    source: {
+      name: "national geographic",
+    },
+
+    title: "Nostalgic Photos of Tourists in U.S. National Parks",
+    urlToImage: ".",
+    publishedAt: "October 19, 2020",
+    content: `Uri Løvevild Golman and Helle Løvevild Golman are National Geographic Explorers and conservation photographers who just completed a project and book they call their love letter to...`,
+    isLiked: false,
+    keyword: "Yellowstone",
+  },
+  {
+    _id: 3,
+    source: {
+      name: "National parks traveler",
+    },
+
+    title: "Everyone Needs a Special 'Sit Spot' in Nature",
+    urlToImage: ".",
+    publishedAt: "November 4, 2020",
+    content:
+      "“The linking together of the Cascade and Death Canyon trails, at their heads, took place on October 1, 1933, and marked the first step in the realization of a plan whereby the hiker will be...",
+    isLiked: false,
+    keyword: "Nature",
+  },
+  {
+    _id: 4,
+    source: {
+      name: "treehugger",
+    },
+
+    title: "Scientists Don't Know Why Polaris Is So Weird ",
+    urlToImage: ".",
+    publishedAt: "March 16, 2020",
+    content:
+      "Humans have long relied on the starry sky to push into new frontiers, sail to the very edge of the world and find their way back home again. Even animals look to the stars to guide them. ",
+    isLiked: false,
+    keyword: "Photography",
   },
 ];

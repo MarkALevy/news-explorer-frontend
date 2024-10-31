@@ -6,7 +6,7 @@ import Preloader from "../Preloader/Preloader";
 function Main() {
   return (
     <main>
-      {/* <SearchResults /> */}
+      <SearchResults />
       <Preloader />
       <NothingFound />
       <About />

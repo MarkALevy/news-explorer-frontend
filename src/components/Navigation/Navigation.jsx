@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";
+import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import "./Navigation.css";
-function Navigation({ isLoggedIn, currentPage, handleLoginClick, onLogout }) {
+function Navigation({ handleLoginClick, onLogout }) {
+  const isLoggedIn = useContext(IsLoggedInContext);
+  const currentPage = useContext(CurrentPageContext);
   return (
     <nav className={`nav nav_${currentPage}`}>
       <Link to="/" className="nav__sitename_link">
