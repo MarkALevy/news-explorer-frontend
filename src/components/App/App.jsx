@@ -65,9 +65,9 @@ function App() {
               <>
                 <Header
                   isLoggedIn={isLoggedIn}
-                  currentPage={currentPage}
                   handleLoginClick={handleLoginClick}
                   onLogout={onLogout}
+                  currentPage="home"
                 />
                 <Main />
               </>
@@ -78,7 +78,7 @@ function App() {
             path="/saved-news"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <SavedNewsHeader onLogout={onLogout} />
+                <SavedNewsHeader onLogout={onLogout} currentPage="saved-news"/>
                 <SavedNews />
               </ProtectedRoute>
             }

@@ -7,7 +7,6 @@
 }
 
 .nav__sitename {
-  color: #fff;
   font-size: 20px;
   font-family: "Roboto-Slab", "Courier New", Courier, monospace;
   font-weight: 700;
@@ -23,7 +22,6 @@
   font-weight: 500;
 }
 .nav__link {
-  color: #b6bcbf;
   background-color: transparent;
   border-style: none;
   padding: 0;
@@ -42,12 +40,11 @@
   width: 178px;
 }
 
-.nav__link_current {
-  color: #fff;
+/* .nav__link_current {
   padding-top: 28px;
   padding-bottom: 25px;
-  border-bottom: 3px solid #fff;
-}
+  border-bottom: 3px solid;
+} */
 
 .nav__current-user {
   background-color: transparent;
@@ -57,7 +54,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #fff;
+  border: 1px solid;
   border-radius: 100px;
   margin-left: 32px;
   cursor: pointer;
@@ -67,7 +64,6 @@
   line-height: 24px;
   padding: 0;
   border-style: none;
-  color: #fff;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -78,7 +74,7 @@
 
 .nav__current-user_name_signout {
   background-color: transparent;
-  background-image: url(../../assets/logout.svg);
+
   background-repeat: no-repeat;
   background-size: cover;
   padding: 12px;
@@ -130,5 +126,38 @@
 }
 
 .nav__link_current_saved-news {
+  padding-top: 28px;
+  padding-bottom: 25px;
+  border-bottom: 3px solid;
+  color: #1a1b22;
   border-color: #1a1b22;
+}
+/*  */
+
+.nav__sitename_home {
+  color: #fff;
+}
+
+.nav__link_home {
+  color: #b6bcbf;
+}
+
+.nav__current-user_home {
+  border-color: #fff;
+}
+
+.nav__current-user_name_home {
+  color: #fff;
+}
+
+.nav__current-user_name_signout_home {
+  background-image: url(../../assets/logout.svg);
+}
+
+.nav__link_current_home {
+  padding-top: 28px;
+  padding-bottom: 25px;
+  border-bottom: 3px solid;
+  color: #fff;
+  border-color: #fff;
 }

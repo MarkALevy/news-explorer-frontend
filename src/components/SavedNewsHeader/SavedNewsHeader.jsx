@@ -1,12 +1,12 @@
 import Navigation from "../Navigation/Navigation";
 // import SavedNews from "../SavedNews/SavedNews";
 import "./SavedNewsHeader.css";
-function SavedNewsHeader({ onLogout }) {
+function SavedNewsHeader({ onLogout, currentPage }) {
   return (
     <header className="saved-news__header">
       <Navigation
         isLoggedIn="true"
-        currentPage="saved-news"
+        currentPage={currentPage}
         onLogout={onLogout}
       />
       <div className="saved-news__header_text">

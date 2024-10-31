@@ -11,7 +11,9 @@ function Navigation({ isLoggedIn, currentPage, handleLoginClick, onLogout }) {
       <div className="nav__links">
         <Link to="/">
           <button
-            className={`nav__link nav__link_${currentPage} nav__link_to-home nav__link_current nav__link_current_${currentPage}`}
+            className={`nav__link nav__link_${currentPage} nav__link_to-home ${
+              currentPage === "home" ? `nav__link_current_${currentPage}` : ""
+            }`}
           >
             Home
           </button>
@@ -20,7 +22,11 @@ function Navigation({ isLoggedIn, currentPage, handleLoginClick, onLogout }) {
           <div className="nav__links nav__logged-in">
             <Link to="/saved-news">
               <button
-                className={`nav__link nav__link_${currentPage} nav__link_to-saved`}
+                className={`nav__link nav__link_${currentPage} nav__link_to-saved ${
+                  currentPage === "saved-news"
+                    ? `nav__link_current_${currentPage}`
+                    : ""
+                }`}
               >
                 Saved articles
               </button>
