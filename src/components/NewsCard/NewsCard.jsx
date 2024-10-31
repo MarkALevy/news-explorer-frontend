@@ -29,18 +29,21 @@ function NewsCard() {
           ) : (
             <>
               <p className="card__keyword">{card.keyword}</p>
-              <p className="card__delete-prompt card__delete-prompt-visible">
-                Remove from saved
-              </p>
-              <button className="card__delete_btn"></button>
+
+              <button className="card__delete_btn">
+                <p className="card__delete-tooltip card__delete-tooltip-visible">
+                  Remove from saved
+                </p>
+              </button>
             </>
           )
         ) : (
           <>
-            <p className="card__signin-prompt card__signin-prompt-visible">
-              Sign in to save articles
-            </p>
-            <button className="card__save-btn_unchecked"></button>
+            <button className="card__save-btn_unchecked">
+              <p className="card__signin-tooltip card__signin-tooltip-visible">
+                Sign in to save articles
+              </p>
+            </button>
           </>
         )}
       </div>
