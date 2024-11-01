@@ -2,7 +2,7 @@ import NewsCard from "../NewsCard/NewsCard";
 import { defaultNewsItems } from "../../utils/constants";
 import "./NewsCardList.css";
 
-function NewsCardList({ handleLoginClick }) {
+function NewsCardList({ handleLoginClick, numResults }) {
   return (
     <div className="news-card-section">
       <ul className="cards__list">
@@ -15,7 +15,7 @@ function NewsCardList({ handleLoginClick }) {
               defaultNewsItems={defaultNewsItems}
             />
           );
-        })}
+        }).slice(0, numResults)}
       </ul>
     </div>
   );
