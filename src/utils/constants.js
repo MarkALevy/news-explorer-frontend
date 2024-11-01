@@ -45,13 +45,13 @@ export const defaultNewsItems = [
       name: "National parks traveler",
     },
 
-    title: "Everyone Needs a Special 'Sit Spot' in Nature",
+    title: "Grand Teton Renews Historic Crest Trail",
     urlToImage: ".",
     publishedAt: "November 4, 2020",
     content:
       "“The linking together of the Cascade and Death Canyon trails, at their heads, took place on October 1, 1933, and marked the first step in the realization of a plan whereby the hiker will be...",
     isLiked: false,
-    keyword: "Nature",
+    keyword: "Parks",
   },
   {
     _id: 4,

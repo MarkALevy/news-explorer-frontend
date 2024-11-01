@@ -4,7 +4,6 @@ import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 
 //////////////////////////Temporary ////////////////////////
-import { defaultNewsItems } from "../../utils/constants";
 import image1 from "../../assets/temp/image_01.png";
 import image2 from "../../assets/temp/image_02.png";
 import image3 from "../../assets/temp/image_03.png";
@@ -12,14 +11,13 @@ import image4 from "../../assets/temp/image_04.png";
 import image5 from "../../assets/temp/image_05.png";
 ////////////////////////////////////////////////////////////
 
-function NewsCard({ handleLoginClick }) {
+function NewsCard({ handleLoginClick, defaultNewsItems, item }) {
   const isLoggedIn = useContext(IsLoggedInContext);
   const currentPage = useContext(CurrentPageContext);
   const [isClicked, setIsClicked] = useState(false);
 
-  const card = defaultNewsItems[0];
+  const card = item;
   const images = [image1, image2, image3, image4, image5];
-  console.log(card);
 
   useEffect(() => {
     if (isClicked) {

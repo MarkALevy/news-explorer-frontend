@@ -1,4 +1,14 @@
 .search-results {
   background-color: #f5f6f7;
   min-height: 282px;
+  padding: 80px 104px;
+}
+
+.search-results__title {
+  font-family: "Roboto-Slab", "Courier New", Courier, monospace;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  margin: 0 0 64px 0;
+  color: #1a1b22;
 }

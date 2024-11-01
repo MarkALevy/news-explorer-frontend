@@ -109,11 +109,7 @@ function App() {
                 path="/saved-news"
                 element={
                   <ProtectedRoute>
-                    <SavedNewsHeader
-                      onLogout={onLogout}
-                      currentPage="saved-news"
-                    />
-                    <SavedNews />
+                    <SavedNews onLogout={onLogout} />
                   </ProtectedRoute>
                 }
               />
