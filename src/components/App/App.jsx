@@ -100,7 +100,7 @@ function App() {
                       handleLoginClick={handleLoginClick}
                       onLogout={onLogout}
                     />
-                    <Main />
+                    <Main handleLoginClick={handleLoginClick} />
                   </>
                 }
               />

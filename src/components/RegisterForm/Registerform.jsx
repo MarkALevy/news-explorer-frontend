@@ -23,6 +23,7 @@ function RegisterForm({ onClose, isOpen, onSubmit, handleLoginClick }) {
     e.preventDefault();
     handleLoginClick();
   };
+  
   return (
     <PopupWithForm
       buttonText="Sign Up"

@@ -8,12 +8,21 @@
 }
 
 .card__header {
+  width: 352px;
   display: flex;
   padding: 24px;
   position: absolute;
   right: 0;
+  align-items: center;
 }
 
+.card__header_home {
+  justify-content: flex-end;
+}
+
+.card__header_saved-news {
+  justify-content: space-between;
+}
 .card__keyword {
   background-color: #fff;
   border-radius: 10px;
@@ -23,12 +32,12 @@
   line-height: 24px;
   text-align: center;
   padding: 8px 22px;
+  margin: 0;
 }
 
-.card__save-btn_unchecked {
+.card__save-btn {
   border-style: none;
   background-color: #fff;
-  background-image: url(../../assets/bookmark.svg);
   background-position: center;
   background-repeat: no-repeat;
   width: 40px;
@@ -37,6 +46,14 @@
   border-radius: 8px;
   cursor: pointer;
   position: relative;
+}
+
+.card__save-btn_unchecked {
+  background-image: url(../../assets/bookmark-unchecked.svg);
+}
+
+.card__save-btn_checked {
+  background-image: url(../../assets/bookmark-checked.svg);
 }
 
 .card__save-btn_unchecked:hover {
@@ -58,11 +75,112 @@
   box-shadow: 0px 10px 22px 0px #3b4a741a;
   visibility: hidden;
   position: absolute;
-
   top: -11px;
   right: 45px;
 }
 
 .card__save-btn_unchecked:hover .card__signin-tooltip {
+  visibility: visible;
+}
+
+.card__image {
+  height: 272px;
+}
+
+.card__text {
+  padding: 20px 24px 24px 24px;
+}
+
+.card__date {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #b6bcbf;
+  margin: 0 0 12px 0;
+}
+
+.card__title {
+  font-family: "Roboto-Slab", "Courier New", Courier, monospace;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  color: #1a1b22;
+  margin: 0 0 16px 0;
+  max-height: 60px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.card__preview {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #1a1b22;
+  margin: 0 0 18px 0;
+  max-height: 110px;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.card__source {
+  font-family: "Roboto-Slab", "Courier New", Courier, monospace;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  color: #b6bcbf;
+  margin: 0;
+}
+
+.card__delete_btn {
+  border-style: none;
+  background-color: #fff;
+  background-image: url(../../assets/delete.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+.card__delete_btn:hover {
+  background-image: url(../../assets/delete-hover.svg);
+}
+
+.card__delete-tooltip {
+  background-color: #fff;
+  border-radius: 10px;
+  border-style: none;
+  color: #000;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 11px;
+  box-shadow: 0px 10px 22px 0px #3b4a741a;
+  visibility: hidden;
+  position: absolute;
+  top: -11px;
+  right: 45px;
+}
+
+.card__delete_btn:hover .card__delete-tooltip {
   visibility: visible;
 }

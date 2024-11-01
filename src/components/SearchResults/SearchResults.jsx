@@ -2,10 +2,10 @@ import "./SearchResults.css";
 
 import NewsCardList from "../NewsCardList/NewsCardList";
 
-function SearchResults({ isLoggedIn, currentPage }) {
+function SearchResults({ isLoggedIn, currentPage, handleLoginClick }) {
   return (
     <div className="search-results">
-      <NewsCardList />
+      <NewsCardList handleLoginClick={handleLoginClick} />
     </div>
   );
 }

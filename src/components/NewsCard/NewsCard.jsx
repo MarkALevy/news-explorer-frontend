@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./NewsCard.css";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
@@ -12,20 +12,35 @@ import image4 from "../../assets/temp/image_04.png";
 import image5 from "../../assets/temp/image_05.png";
 ////////////////////////////////////////////////////////////
 
-function NewsCard() {
+function NewsCard({ handleLoginClick }) {
   const isLoggedIn = useContext(IsLoggedInContext);
   const currentPage = useContext(CurrentPageContext);
+  const [isClicked, setIsClicked] = useState(false);
 
   const card = defaultNewsItems[0];
   const images = [image1, image2, image3, image4, image5];
   console.log(card);
 
+  useEffect(() => {
+    if (isClicked) {
+      card.isLiked = !card.isLiked;
+      setIsClicked(false);
+    }
+  }, [isClicked]);
+
   return (
     <div className="card">
-      <div className="card__header">
+      <div className={`card__header card__header_${currentPage}`}>
         {isLoggedIn ? (
           currentPage === "home" ? (
-            <button className="card__save-btn_unchecked"></button>
+            <button
+              className={`${
+                card.isLiked
+                  ? "card__save-btn card__save-btn_checked"
+                  : "card__save-btn card__save-btn_unchecked"
+              } `}
+              onClick={() => setIsClicked(true)}
+            ></button>
           ) : (
             <>
               <p className="card__keyword">{card.keyword}</p>
@@ -39,7 +54,10 @@ function NewsCard() {
           )
         ) : (
           <>
-            <button className="card__save-btn_unchecked">
+            <button
+              className="card__save-btn card__save-btn_unchecked"
+              onClick={handleLoginClick}
+            >
               <p className="card__signin-tooltip card__signin-tooltip-visible">
                 Sign in to save articles
               </p>
@@ -53,7 +71,7 @@ function NewsCard() {
           <p className="card__date">{card.publishedAt}</p>
           <p className="card__title">{card.title}</p>
           <p className="card__preview">{card.content}</p>
-          <p className="card__source">{card.source.name}</p>
+          <p className="card__source">{card.source.name.toUpperCase()}</p>
         </div>
       </div>
     </div>

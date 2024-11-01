@@ -3,10 +3,10 @@ import SearchResults from "../SearchResults/SearchResults";
 import About from "../About/About";
 import NothingFound from "../NothingFound/NothingFound";
 import Preloader from "../Preloader/Preloader";
-function Main() {
+function Main({ handleLoginClick }) {
   return (
     <main>
-      <SearchResults />
+      <SearchResults handleLoginClick={handleLoginClick} />
       <Preloader />
       <NothingFound />
       <About />
