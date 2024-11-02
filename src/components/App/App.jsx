@@ -53,7 +53,12 @@ function App() {
   };
 
   const handleLikeItem = (item) => {
-    setLikedItems([item, ...likedItems]);
+    item.isLiked = !item.isLiked;
+    if (item.isLiked && !likedItems.includes(item))
+      setLikedItems([item, ...likedItems]);
+    else if (!item.isLiked && likedItems.includes(item)) {
+      handleRemoveLike(item);
+    }
   };
 
   const handleRemoveLike = (card) => {

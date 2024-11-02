@@ -3,6 +3,7 @@
   justify-content: space-between;
   height: 40px;
   padding: 20px 104px;
+  align-items: center;
   box-shadow: 0px -1px 0px 0px #ffffff33 inset;
 }
 
@@ -28,7 +29,7 @@
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
-  margin-left: 33px;
+  margin-left: 32px;
   cursor: pointer;
 }
 
@@ -77,7 +78,7 @@
 
 .nav__signin {
   background-color: transparent;
-  margin-left: 34px;
+  margin-left: 32px;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
@@ -152,4 +153,36 @@
   border-bottom: 3px solid;
   color: #fff;
   border-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    height: 26px;
+    padding: 20px 40px;
+  }
+  .nav__link_current_home,
+  .nav__link_current_saved-news {
+    padding-top: 21px;
+    padding-bottom: 18px;
+  }
+  .nav__link_to-home {
+    width: 60px;
+  }
+
+  .nav__link_to-saved {
+    width: 160px;
+  }
+  .nav__current-user {
+    margin-left: 16px;
+  }
+
+  .nav__current-user {
+    padding: 8px 15px;
+  }
+  .nav__signin,
+  .nav__current-user,
+  .nav__link {
+    margin-left: 16px;
+    font-size: 16px;
+  }
 }

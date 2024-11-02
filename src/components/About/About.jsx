@@ -3,7 +3,7 @@ import Avatar from "../../assets/About.jpg";
 function About() {
   return (
     <div className="about">
-      <img src={Avatar} alt="" className="about__img" />
+      <img src={Avatar} alt="Author image" className="about__img" />
       <div className="about__text">
         <h2 className="about__title">About the author</h2>
         <p className="about__description">

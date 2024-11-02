@@ -27,7 +27,7 @@ function NewsCard({
 
   const onLike = () => {
     handleLikeItem(item);
-    item.isLiked = !item.isLiked;
+    // item.isLiked = !item.isLiked;
   };
 
   const onRemove = () => {

@@ -1,12 +1,11 @@
 .saved-news__header {
-  min-height: 230px;
   background-color: #fff;
   margin: 0 auto;
 }
 
 .saved-news__header_text {
-  color: #000;
   padding: 40px 104px 56px;
+  color: #000;
   max-width: 530px;
 }
 
@@ -39,4 +38,22 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .saved-news__header_text {
+    padding: 24px 40px 32px;
+    max-width: 370px;
+  }
+  .saved-news__header_subtitle {
+    font-size: 14px;
+  }
+  .saved-news__header_info {
+    font-size: 30px;
+    line-height: 34px;
+    margin-top: 16px;
+  }
+  .saved-news__header_keywords {
+    margin-top: 16px;
+  }
 }

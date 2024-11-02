@@ -31,13 +31,12 @@
 .search-form__text-box {
   border-radius: 100px;
   border: 1px solid #d1d2d6;
-  backdrop-filter: blur(8px);
-  width: 559px;
-  height: 22px;
+  width: 376px;
+  line-height: 22px;
   font-size: 16px;
   font-weight: 400;
   font-family: "Roboto", Arial, sans-serif;
-  padding: 21px 24px;
+  padding: 21px 100px 21px 24px;
   box-shadow: 0px 5px 15px 0px #0e1a3933;
   caret-color: #2f71e5;
 }
@@ -76,4 +75,26 @@
 
 .search-form__btn:active {
   background-color: #2a65cc;
+}
+
+@media screen and (max-width: 768px) {
+  .search-form {
+    width: 452px;
+    margin: 38px auto 48px;
+  }
+  .search-form__title {
+    margin-bottom: 16px;
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .search-form__description {
+    margin-bottom: 48px;
+  }
+  .search-form__text-box {
+    width: 228px;
+    padding: 17px 80px 17px 24px;
+  }
+  .search-form__btn {
+    width: 160px;
+  }
 }
