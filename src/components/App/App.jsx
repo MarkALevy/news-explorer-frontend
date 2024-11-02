@@ -17,12 +17,20 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader.jsx";
 import SavedNews from "../SavedNews/SavedNews.jsx";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext.jsx";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext.jsx";
+import { defaultNewsItems } from "../../utils/constants";
 import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [activeModal, setActiveModal] = useState("");
   const [currentPage, setCurrentPage] = useState("home");
+  const [likedItems, setLikedItems] = useState(
+    defaultNewsItems.filter((item) => {
+      return item.isLiked === true;
+    })
+  );
+
+  console.log(likedItems);
 
   const handleLogin = ({ email, password }) => {
     console.log(activeModal);
@@ -42,6 +50,18 @@ function App() {
 
   const handleLoginClick = () => {
     setActiveModal("login");
+  };
+
+  const handleLikeItem = (item) => {
+    setLikedItems([item, ...likedItems]);
+  };
+
+  const handleRemoveLike = (card) => {
+    setLikedItems(
+      likedItems.filter((item) => {
+        return item !== card;
+      })
+    );
   };
 
   const onLogout = () => {
@@ -100,7 +120,10 @@ function App() {
                       handleLoginClick={handleLoginClick}
                       onLogout={onLogout}
                     />
-                    <Main handleLoginClick={handleLoginClick} />
+                    <Main
+                      handleLoginClick={handleLoginClick}
+                      handleLikeItem={handleLikeItem}
+                    />
                   </>
                 }
               />
@@ -109,7 +132,11 @@ function App() {
                 path="/saved-news"
                 element={
                   <ProtectedRoute>
-                    <SavedNews onLogout={onLogout} />
+                    <SavedNews
+                      onLogout={onLogout}
+                      likedItems={likedItems}
+                      handleRemoveLike={handleRemoveLike}
+                    />
                   </ProtectedRoute>
                 }
               />

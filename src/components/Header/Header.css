@@ -1,5 +1,6 @@
 .header {
   min-height: 576px;
+  max-width: 1440px;
   background-image: url(../../assets/Background.png);
   background-position: center;
   background-repeat: no-repeat;

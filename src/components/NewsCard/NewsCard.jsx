@@ -11,7 +11,13 @@ import image4 from "../../assets/temp/image_04.png";
 import image5 from "../../assets/temp/image_05.png";
 ////////////////////////////////////////////////////////////
 
-function NewsCard({ handleLoginClick, defaultNewsItems, item }) {
+function NewsCard({
+  handleLoginClick,
+  defaultNewsItems,
+  item,
+  handleLikeItem,
+  handleRemoveLike,
+}) {
   const isLoggedIn = useContext(IsLoggedInContext);
   const currentPage = useContext(CurrentPageContext);
   const [isClicked, setIsClicked] = useState(false);
@@ -19,12 +25,16 @@ function NewsCard({ handleLoginClick, defaultNewsItems, item }) {
   const card = item;
   const images = [image1, image2, image3, image4, image5];
 
-  useEffect(() => {
-    if (isClicked) {
-      card.isLiked = !card.isLiked;
-      setIsClicked(false);
-    }
-  }, [isClicked]);
+  const onLike = () => {
+    handleLikeItem(item);
+    item.isLiked = !item.isLiked;
+  };
+
+  const onRemove = () => {
+    handleRemoveLike(item);
+    item.isLiked = false;
+    handle;
+  };
 
   return (
     <div className="card">
@@ -33,17 +43,17 @@ function NewsCard({ handleLoginClick, defaultNewsItems, item }) {
           currentPage === "home" ? (
             <button
               className={`${
-                card.isLiked
+                item.isLiked
                   ? "card__save-btn card__save-btn_checked"
                   : "card__save-btn card__save-btn_unchecked"
               } `}
-              onClick={() => setIsClicked(true)}
+              onClick={onLike}
             ></button>
           ) : (
             <>
-              <p className="card__keyword">{card.keyword}</p>
+              <p className="card__keyword">{item.keyword}</p>
 
-              <button className="card__delete_btn">
+              <button className="card__delete_btn" onClick={onRemove}>
                 <p className="card__delete-tooltip card__delete-tooltip-visible">
                   Remove from saved
                 </p>
@@ -64,12 +74,12 @@ function NewsCard({ handleLoginClick, defaultNewsItems, item }) {
         )}
       </div>
       <div className="card__content">
-        <img className="card__image" src={images[card._id]} alt={card.title} />
+        <img className="card__image" src={images[item._id]} alt={item.title} />
         <div className="card__text">
-          <p className="card__date">{card.publishedAt}</p>
-          <p className="card__title">{card.title}</p>
-          <p className="card__preview">{card.content}</p>
-          <p className="card__source">{card.source.name.toUpperCase()}</p>
+          <p className="card__date">{item.publishedAt}</p>
+          <p className="card__title">{item.title}</p>
+          <p className="card__preview">{item.content}</p>
+          <p className="card__source">{item.source.name.toUpperCase()}</p>
         </div>
       </div>
     </div>

@@ -1,14 +1,21 @@
-import "./Main.css";
+import { useState } from "react";
 import SearchResults from "../SearchResults/SearchResults";
 import About from "../About/About";
 import NothingFound from "../NothingFound/NothingFound";
 import Preloader from "../Preloader/Preloader";
-function Main({ handleLoginClick }) {
+import "./Main.css";
+function Main({ handleLoginClick, handleLikeItem }) {
+  const [searchState, setSearchState] = useState("newsFound");
   return (
     <main>
-      <SearchResults handleLoginClick={handleLoginClick} />
-      <Preloader />
-      <NothingFound />
+      {searchState === "searching" && <Preloader />}
+      {searchState === "nothingFound" && <NothingFound />}{" "}
+      {searchState === "newsFound" && (
+        <SearchResults
+          handleLoginClick={handleLoginClick}
+          handleLikeItem={handleLikeItem}
+        />
+      )}
       <About />
     </main>
   );

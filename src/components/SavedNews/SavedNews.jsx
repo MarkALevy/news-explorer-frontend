@@ -5,10 +5,11 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
 import "./SavedNews.css";
 
-function SavedNews({ onLogout }) {
-  const likedItems = defaultNewsItems.filter((item) => {
-    return item.isLiked === true;
-  });
+function SavedNews({ onLogout, likedItems, handleRemoveLike }) {
+  // const likedItems = defaultNewsItems.filter((item) => {
+  //   return item.isLiked === true;
+  // });
+
   const keywords = [];
 
   likedItems.map((item) => {
@@ -30,6 +31,7 @@ function SavedNews({ onLogout }) {
               key={item._id}
               item={item}
               defaultNewsItems={defaultNewsItems}
+              handleRemoveLike={handleRemoveLike}
             />
           );
         })}

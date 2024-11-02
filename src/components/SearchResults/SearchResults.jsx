@@ -3,7 +3,12 @@ import { defaultNewsItems } from "../../utils/constants";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import { useState } from "react";
 
-function SearchResults({ isLoggedIn, currentPage, handleLoginClick }) {
+function SearchResults({
+  isLoggedIn,
+  currentPage,
+  handleLoginClick,
+  handleLikeItem,
+}) {
   const [numResults, setNumResults] = useState(3);
   return (
     <div className="search-results">
@@ -11,6 +16,7 @@ function SearchResults({ isLoggedIn, currentPage, handleLoginClick }) {
       <NewsCardList
         handleLoginClick={handleLoginClick}
         numResults={numResults}
+        handleLikeItem={handleLikeItem}
       />
       <button
         className="search-results__load-more"

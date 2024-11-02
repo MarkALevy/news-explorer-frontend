@@ -11,7 +11,7 @@ function SavedNewsHeader({ onLogout, totalLiked, keywords }) {
           Elise, you have {totalLiked} saved articles
         </p>
         <p className="saved-news__header_keywords">
-          By keywords:{" "}
+          {keywords[0] ? "By keywords: " : ""}
           <span className="saved-news__header_keywords_span">
             {keywords[0]} {keywords[1] ? `, ${keywords[1]}` : ""}
             {keywords[2] ? `, and ${keywords.length - 2} other` : ""}
