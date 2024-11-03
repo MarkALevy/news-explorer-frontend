@@ -1,3 +1,4 @@
+import React from "react";
 import "./About.css";
 import Avatar from "../../assets/About.jpg";
 function About() {

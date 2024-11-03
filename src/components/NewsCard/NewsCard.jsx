@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useEffect, useState } from "react";
 import "./NewsCard.css";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";

@@ -1,3 +1,4 @@
+import React from "react";
 import "./InfoPopup.css";
 function InfoPopup({ isOpen, onClose, title, buttonText, handleLoginClick }) {
   return (

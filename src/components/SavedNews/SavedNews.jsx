@@ -1,3 +1,4 @@
+import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import { useEffect } from "react";
 import { defaultNewsItems } from "../../utils/constants";

@@ -1,3 +1,4 @@
+import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import { defaultNewsItems } from "../../utils/constants";
 import "./NewsCardList.css";

@@ -1,3 +1,4 @@
+import React from "react";
 import "./SearchResults.css";
 import { defaultNewsItems } from "../../utils/constants";
 import NewsCardList from "../NewsCardList/NewsCardList";

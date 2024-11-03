@@ -1,3 +1,4 @@
+import React from "react";
 import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
 
