@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import "./Navigation.css";
-function Navigation({ handleLoginClick, onLogout }) {
+function Navigation({ isOpen, handleLoginClick, onLogout, handleMenuClick }) {
   const isLoggedIn = useContext(IsLoggedInContext);
   const currentPage = useContext(CurrentPageContext);
   return (
-    <nav className={`nav nav_${currentPage}`}>
+    <nav className={`nav nav_${currentPage} nav__modal_${isOpen}`}>
       <Link to="/" className="nav__sitename_link">
         <p className={`nav__sitename nav__sitename_${currentPage}`}>
           NewsExplorer
@@ -58,6 +58,10 @@ function Navigation({ handleLoginClick, onLogout }) {
           </div>
         )}
       </div>
+      <button
+        className={`nav__mobile-menu nav__mobile-menu_${currentPage}`}
+        onClick={handleMenuClick}
+      ></button>
     </nav>
   );
 }

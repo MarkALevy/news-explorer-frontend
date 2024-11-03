@@ -34,9 +34,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   border: none;
-  height: 0;
-  width: 0;
-  padding: 20px;
+  height: 40px;
+  width: 40px;
+  padding: 0;
   position: absolute;
   top: -40px;
   right: -40px;
@@ -170,8 +170,32 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
-}
-
 @media screen and (max-width: 575px) {
+  .modal {
+    background-color: transparent;
+  }
+  .modal__content {
+    max-width: 100vw;
+    height: 100vh;
+    padding: 16px;
+    box-sizing: border-box;
+    padding-bottom: 150px;
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .modal__close {
+    right: 0;
+    top: -56px;
+    height: 24px;
+    width: 24px;
+    margin: 16px;
+  }
+
+  .nav__modal_true {
+    visibility: hidden;
+  }
 }

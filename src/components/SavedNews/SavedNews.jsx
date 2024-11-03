@@ -5,7 +5,13 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
 import "./SavedNews.css";
 
-function SavedNews({ onLogout, likedItems, handleRemoveLike }) {
+function SavedNews({
+  onLogout,
+  likedItems,
+  handleRemoveLike,
+  handleMenuClick,
+  isOpen,
+}) {
   // const likedItems = defaultNewsItems.filter((item) => {
   //   return item.isLiked === true;
   // });
@@ -23,6 +29,8 @@ function SavedNews({ onLogout, likedItems, handleRemoveLike }) {
         onLogout={onLogout}
         totalLiked={likedItems.length}
         keywords={keywords}
+        handleMenuClick={handleMenuClick}
+        isOpen={isOpen}
       />
       <ul className="saved-news__list">
         {likedItems.map((item) => {

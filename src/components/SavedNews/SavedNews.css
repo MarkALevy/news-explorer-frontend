@@ -22,3 +22,10 @@
     gap: 8px;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .saved-news__list {
+    grid-template-columns: repeat(auto-fit, 288px);
+    gap: 10px;
+  }
+}

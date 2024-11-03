@@ -15,6 +15,7 @@ import RegisterForm from "../RegisterForm/Registerform.jsx";
 import InfoPopup from "../InfoPopup/InfoPopup.jsx";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader.jsx";
 import SavedNews from "../SavedNews/SavedNews.jsx";
+import MobileMenu from "../MobileMenu/MobileMenu.jsx";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext.jsx";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext.jsx";
 import { defaultNewsItems } from "../../utils/constants";
@@ -22,7 +23,7 @@ import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [activeModal, setActiveModal] = useState("");
+  const [activeModal, setActiveModal] = useState("register");
   const [currentPage, setCurrentPage] = useState("home");
   const [likedItems, setLikedItems] = useState(
     defaultNewsItems.filter((item) => {
@@ -50,6 +51,10 @@ function App() {
 
   const handleLoginClick = () => {
     setActiveModal("login");
+  };
+
+  const handleMenuClick = () => {
+    setActiveModal("menu");
   };
 
   const handleLikeItem = (item) => {
@@ -124,6 +129,8 @@ function App() {
                     <Header
                       handleLoginClick={handleLoginClick}
                       onLogout={onLogout}
+                      handleMenuClick={handleMenuClick}
+                      isOpen={activeModal !== ""}
                     />
                     <Main
                       handleLoginClick={handleLoginClick}
@@ -141,6 +148,8 @@ function App() {
                       onLogout={onLogout}
                       likedItems={likedItems}
                       handleRemoveLike={handleRemoveLike}
+                      handleMenuClick={handleMenuClick}
+                      isOpen={activeModal !== ""}
                     />
                   </ProtectedRoute>
                 }
@@ -181,6 +190,14 @@ function App() {
               buttonText="Sign in"
               onClose={closeActiveModal}
               handleLoginClick={handleLoginClick}
+            />
+          )}
+          {activeModal === "menu" && (
+            <MobileMenu
+              isOpen={activeModal === "menu"}
+              onClose={closeActiveModal}
+              handleLoginClick={handleLoginClick}
+              onLogout={onLogout}
             />
           )}
         </div>

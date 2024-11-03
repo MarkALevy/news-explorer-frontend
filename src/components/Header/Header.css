@@ -1,14 +1,24 @@
 .header {
   min-height: 576px;
   max-width: 1440px;
-  background-image: url(../../assets/Background.png);
+  background-image: url(../../assets/background.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 768px) {
   .header {
     min-height: 400px;
+    background-image: url(../../assets/background-tablet.png);
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .header {
+    background-image: url(../../assets/background-mobile.png);
+    min-height: 536px;
   }
 }
