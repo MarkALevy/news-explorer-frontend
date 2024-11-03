@@ -223,4 +223,8 @@
   .nav__mobile-menu {
     display: block;
   }
+
+  .nav__modal_true {
+    visibility: hidden;
+  }
 }
