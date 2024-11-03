@@ -37,7 +37,7 @@ function NewsCard({
   };
 
   return (
-    <div className="card">
+    <li className="card">
       <div className={`card__header card__header_${currentPage}`}>
         {isLoggedIn ? (
           currentPage === "home" ? (
@@ -82,7 +82,7 @@ function NewsCard({
         </div>
         <p className="card__source">{item.source.name.toUpperCase()}</p>
       </div>
-    </div>
+    </li>
   );
 }
 

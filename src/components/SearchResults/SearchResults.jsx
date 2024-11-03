@@ -11,7 +11,7 @@ function SearchResults({
 }) {
   const [numResults, setNumResults] = useState(3);
   return (
-    <div className="search-results">
+    <section className="search-results">
       <h2 className="search-results__title">Search results</h2>
       <NewsCardList
         handleLoginClick={handleLoginClick}
@@ -25,7 +25,7 @@ function SearchResults({
       >
         Show more
       </button>
-    </div>
+    </section>
   );
 }
 

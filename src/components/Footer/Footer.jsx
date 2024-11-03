@@ -4,8 +4,8 @@ function Footer() {
   return (
     <footer className="footer">
       <p className="footer__credit">© 2024 Supersite, Powered by News API</p>
-      <div className="footer__links">
-        <div className="footer__links_col">
+      <nav className="footer__links">
+        <div className="footer__links-col">
           <Link to="/" onClick={() => window.scrollTo(0, 0)}>
             <button className="footer__link">Home</button>
           </Link>
@@ -17,7 +17,7 @@ function Footer() {
             <button className="footer__link">TripleTen</button>
           </Link>
         </div>
-        <div className="footer__links_row">
+        <div className="footer__links-row">
           <Link
             to="https://github.com/MarkALevy"
             target="_blank"
@@ -33,7 +33,7 @@ function Footer() {
             <button className="footer__link-fb"></button>
           </Link>
         </div>
-      </div>
+      </nav>
     </footer>
   );
 }

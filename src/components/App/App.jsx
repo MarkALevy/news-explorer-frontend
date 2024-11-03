@@ -31,8 +31,6 @@ function App() {
     })
   );
 
-  console.log(likedItems);
-
   const handleLogin = ({ email, password }) => {
     console.log(activeModal);
   };
