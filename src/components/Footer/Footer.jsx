@@ -6,7 +6,7 @@ function Footer() {
       <p className="footer__credit">© 2024 Supersite, Powered by News API</p>
       <div className="footer__links">
         <div className="footer__links_col">
-          <Link to="/">
+          <Link to="/" onClick={() => window.scrollTo(0, 0)}>
             <button className="footer__link">Home</button>
           </Link>
           <Link

@@ -23,7 +23,7 @@ import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [activeModal, setActiveModal] = useState("success");
+  const [activeModal, setActiveModal] = useState("");
   const [currentPage, setCurrentPage] = useState("home");
   const [likedItems, setLikedItems] = useState(
     defaultNewsItems.filter((item) => {

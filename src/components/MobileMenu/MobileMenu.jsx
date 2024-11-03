@@ -13,7 +13,10 @@ function MobileMenu({ isOpen, onClose, handleLoginClick, onLogout }) {
       >
         <div className={`menu__header menu__header_${currentPage}`}>
           <Link to="/" className="menu__sitename_link">
-            <p className={`menu__sitename menu__sitename_${currentPage}`}>
+            <p
+              className={`menu__sitename menu__sitename_${currentPage}`}
+              onClick={onClose}
+            >
               NewsExplorer
             </p>
           </Link>
@@ -26,6 +29,7 @@ function MobileMenu({ isOpen, onClose, handleLoginClick, onLogout }) {
         <div className="menu__links">
           <Link to="/">
             <button
+              onClick={onClose}
               className={`menu__link menu__link_${currentPage} menu__link_to-home ${
                 currentPage === "home"
                   ? `menu__link_current_${currentPage}`
@@ -39,6 +43,7 @@ function MobileMenu({ isOpen, onClose, handleLoginClick, onLogout }) {
             <div className="menu__links menu__logged-in">
               <Link to="/saved-news">
                 <button
+                  onClick={onClose}
                   className={`menu__link menu__link_${currentPage} menu__link_to-saved ${
                     currentPage === "saved-news"
                       ? `menu__link_current_${currentPage}`
