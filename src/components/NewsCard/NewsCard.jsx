@@ -14,7 +14,7 @@ import image5 from "../../assets/temp/image_05.png";
 
 function NewsCard({
   handleLoginClick,
-  defaultNewsItems,
+  searchResults,
   item,
   handleLikeItem,
   handleRemoveLike,
@@ -31,10 +31,18 @@ function NewsCard({
     // item.isLiked = !item.isLiked;
   };
 
+  const fixDate = (iso) => {
+    const split = iso.split(/\D+/);
+    const parsed = new Date(Date.UTC(split[0], --split[1], split[2]));
+    const month = parsed.toLocaleString("default", { month: "long" });
+    const day = parseInt(split[2]);
+    const year = split[0];
+    return `${month} ${day}, ${year}`;
+  };
+
   const onRemove = () => {
     handleRemoveLike(item);
     item.isLiked = false;
-    handle;
   };
 
   return (
@@ -74,12 +82,12 @@ function NewsCard({
           </>
         )}
       </div>
-      <img className="card__image" src={images[item._id]} alt={item.title} />
+      <img className="card__image" src={item.urlToImage} alt={item.title} />
       <div className="card__content">
         <div className="card__text">
-          <p className="card__date">{item.publishedAt}</p>
+          <p className="card__date">{fixDate(item.publishedAt)}</p>
           <p className="card__title">{item.title}</p>
-          <p className="card__preview">{item.content}</p>
+          <p className="card__preview">{item.description}</p>
         </div>
         <p className="card__source">{item.source.name.toUpperCase()}</p>
       </div>

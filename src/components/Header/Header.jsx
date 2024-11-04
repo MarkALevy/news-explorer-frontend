@@ -3,7 +3,13 @@ import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
 
 import "./Header.css";
-function Header({ handleLoginClick, onLogout, handleMenuClick, isOpen }) {
+function Header({
+  handleLoginClick,
+  onLogout,
+  handleMenuClick,
+  isOpen,
+  onSearch,
+}) {
   return (
     <header className="header">
       <Navigation
@@ -12,7 +18,7 @@ function Header({ handleLoginClick, onLogout, handleMenuClick, isOpen }) {
         handleMenuClick={handleMenuClick}
         isOpen={isOpen}
       />
-      <SearchForm />
+      <SearchForm onSearch={onSearch} />
     </header>
   );
 }

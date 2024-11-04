@@ -5,16 +5,24 @@ import About from "../About/About";
 import NothingFound from "../NothingFound/NothingFound";
 import Preloader from "../Preloader/Preloader";
 
-function Main({ handleLoginClick, handleLikeItem }) {
-  const [searchState, setSearchState] = useState("results");
+function Main({
+  handleLoginClick,
+  handleLikeItem,
+  searchResults,
+  keyword,
+  isLoading,
+}) {
   return (
     <main>
-      {searchState === "searching" && <Preloader />}
-      {searchState === "nothingFound" && <NothingFound />}{" "}
-      {searchState === "results" && (
+      {isLoading && <Preloader />}
+      {searchResults.length === 0 && keyword !== "" && !isLoading && (
+        <NothingFound />
+      )}
+      {searchResults.length !== 0 && keyword !== "" && !isLoading && (
         <SearchResults
           handleLoginClick={handleLoginClick}
           handleLikeItem={handleLikeItem}
+          searchResults={searchResults}
         />
       )}
       <About />

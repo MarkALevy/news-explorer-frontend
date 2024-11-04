@@ -1,13 +1,20 @@
 import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
-import { defaultNewsItems } from "../../utils/constants";
+// import { defaultNewsItems } from "../../utils/constants";
 import "./NewsCardList.css";
 
-function NewsCardList({ handleLoginClick, numResults, handleLikeItem }) {
+function NewsCardList({
+  handleLoginClick,
+  numResults,
+  handleLikeItem,
+  searchResults,
+}) {
+  console.log(searchResults);
+
   return (
     <div className="news-card-section">
       <ul className="cards__list">
-        {defaultNewsItems
+        {searchResults
           .map((item) => {
             return (
               <NewsCard
@@ -15,7 +22,7 @@ function NewsCardList({ handleLoginClick, numResults, handleLikeItem }) {
                 item={item}
                 handleLoginClick={handleLoginClick}
                 handleLikeItem={handleLikeItem}
-                defaultNewsItems={defaultNewsItems}
+                searchResults={searchResults}
               />
             );
           })

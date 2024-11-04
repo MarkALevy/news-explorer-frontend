@@ -19,18 +19,18 @@ import SavedNews from "../SavedNews/SavedNews.jsx";
 import MobileMenu from "../MobileMenu/MobileMenu.jsx";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext.jsx";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext.jsx";
-import { defaultNewsItems } from "../../utils/constants";
+// import { defaultNewsItems } from "../../utils/constants";
+import { getNews } from "../../utils/newsApi.js";
 import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [activeModal, setActiveModal] = useState("");
   const [currentPage, setCurrentPage] = useState("home");
-  const [likedItems, setLikedItems] = useState(
-    defaultNewsItems.filter((item) => {
-      return item.isLiked === true;
-    })
-  );
+  const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [keyword, setKeyword] = useState("");
+  const [likedItems, setLikedItems] = useState([]);
 
   const handleLogin = ({ email, password }) => {
     console.log(activeModal);
@@ -43,6 +43,27 @@ function App() {
   const closeActiveModal = () => {
     setActiveModal("");
   };
+
+  const onSearch = (topic) => {
+    setKeyword(topic);
+    setIsLoading(true);
+  };
+
+  useEffect(() => {
+    if (!keyword) {
+      setIsLoading(false);
+      return;
+    }
+    getNews(keyword)
+      .then((res) => {
+        setSearchResults(res.articles);
+        console.log(searchResults);
+      })
+      .catch((err) => {
+        console.error("Failed to perform search", err);
+      })
+      .finally(() => setIsLoading(false));
+  }, [isLoading]);
 
   const handleRegisterClick = () => {
     setActiveModal("register");
@@ -58,9 +79,10 @@ function App() {
 
   const handleLikeItem = (item) => {
     item.isLiked = !item.isLiked;
-    if (item.isLiked && !likedItems.includes(item))
+    if (item.isLiked && !likedItems.includes(item)) {
+      item.keyword = keyword;
       setLikedItems([item, ...likedItems]);
-    else if (!item.isLiked && likedItems.includes(item)) {
+    } else if (!item.isLiked && likedItems.includes(item)) {
       handleRemoveLike(item);
     }
   };
@@ -130,10 +152,14 @@ function App() {
                       onLogout={onLogout}
                       handleMenuClick={handleMenuClick}
                       isOpen={activeModal !== ""}
+                      onSearch={onSearch}
                     />
                     <Main
                       handleLoginClick={handleLoginClick}
                       handleLikeItem={handleLikeItem}
+                      searchResults={searchResults}
+                      keyword={keyword}
+                      isLoading={isLoading}
                     />
                   </>
                 }

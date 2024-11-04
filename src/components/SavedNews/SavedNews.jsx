@@ -1,7 +1,6 @@
-import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import { useEffect } from "react";
-import { defaultNewsItems } from "../../utils/constants";
+// import { defaultNewsItems } from "../../utils/constants";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
 import "./SavedNews.css";
@@ -12,11 +11,8 @@ function SavedNews({
   handleRemoveLike,
   handleMenuClick,
   isOpen,
+  searchResults,
 }) {
-  // const likedItems = defaultNewsItems.filter((item) => {
-  //   return item.isLiked === true;
-  // });
-
   const keywords = [];
 
   likedItems.map((item) => {
@@ -39,7 +35,7 @@ function SavedNews({
             <NewsCard
               key={item._id}
               item={item}
-              defaultNewsItems={defaultNewsItems}
+              searchResults={searchResults}
               handleRemoveLike={handleRemoveLike}
             />
           );

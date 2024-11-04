@@ -6,7 +6,7 @@ function Footer() {
     <footer className="footer">
       <p className="footer__credit">© 2024 Supersite, Powered by News API</p>
       <nav className="footer__links">
-        <div className="footer__links_type_names">
+        <div className="footer__links__names">
           <Link to="/" onClick={() => window.scrollTo(0, 0)}>
             <button className="footer__link">Home</button>
           </Link>
@@ -18,7 +18,7 @@ function Footer() {
             <button className="footer__link">TripleTen</button>
           </Link>
         </div>
-        <div className="footer__links_type_icons">
+        <div className="footer__links__icons">
           <Link
             to="https://github.com/MarkALevy"
             target="_blank"

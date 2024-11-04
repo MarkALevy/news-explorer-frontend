@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchForm.css";
-function SearchForm() {
+function SearchForm({ onSearch }) {
+  const [topic, setTopic] = useState("");
+  const handleTopicChange = (e) => {
+    setTopic(e.target.value);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    onSearch(topic);
+  };
+
   return (
     <form className="search-form">
       <h1 className="search-form__title">What's going on in the world?</h1>
@@ -13,8 +23,14 @@ function SearchForm() {
           type="text"
           className="search-form__text-box"
           placeholder="Enter topic"
+          onChange={handleTopicChange}
+          value={topic}
+          required
+          minLength={2}
         />
-        <button className="search-form__btn">Search</button>
+        <button className="search-form__btn" onClick={handleSearch}>
+          Search
+        </button>
       </div>
     </form>
   );
