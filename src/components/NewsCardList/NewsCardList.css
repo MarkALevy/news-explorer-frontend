@@ -1,9 +1,24 @@
+.news-card-section {
+  padding: 0;
+  margin: 0;
+}
+
+.news-card-section__title {
+  font-family: "Roboto-Slab", "Courier New", Courier, monospace;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  margin: 0 0 64px 0;
+  color: #1a1b22;
+}
+
 .cards__list {
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
   display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 400px);
+  list-style-type: none;
+  justify-content: start;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 30%));
   grid-auto-rows: auto;
   gap: 16px;
 }
@@ -13,11 +28,19 @@
     grid-template-columns: repeat(auto-fit, 224px);
     gap: 8px;
   }
+  .news-card-section__title {
+    font-size: 30px;
+    line-height: 34px;
+    margin-bottom: 32px;
+  }
 }
 
 @media screen and (max-width: 575px) {
   .cards__list {
     grid-template-columns: repeat(auto-fit, 288px);
     gap: 10px;
+  }
+  .news-card-section__title {
+    margin-bottom: 58px;
   }
 }

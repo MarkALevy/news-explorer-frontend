@@ -1,10 +1,9 @@
 import React from "react";
 import Navigation from "../Navigation/Navigation";
-// import SavedNews from "../SavedNews/SavedNews";
 import "./SavedNewsHeader.css";
 function SavedNewsHeader({
   onLogout,
-  totalLiked,
+  totalSaved,
   keywords,
   handleMenuClick,
   isOpen,
@@ -19,7 +18,7 @@ function SavedNewsHeader({
       <div className="saved-news__header_text">
         <p className="saved-news__header_subtitle">Saved articles</p>
         <p className="saved-news__header_info">
-          Elise, you have {totalLiked} saved articles
+          Elise, you have {totalSaved} saved articles
         </p>
         <p className="saved-news__header_keywords">
           {keywords[0] ? "By keywords: " : ""}

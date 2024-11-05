@@ -1,27 +1,31 @@
 import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
-// import { defaultNewsItems } from "../../utils/constants";
 import "./NewsCardList.css";
 
 function NewsCardList({
   handleLoginClick,
   numResults,
-  handleLikeItem,
+  handleSaveItem,
   searchResults,
+  handleRemoveSave,
+  savedItems,
 }) {
-  console.log(searchResults);
-
   return (
     <div className="news-card-section">
+      <h2 className="news-card-section__title">Search results</h2>
       <ul className="cards__list">
         {searchResults
           .map((item) => {
+            item.isSaved = savedItems.some(
+              (arrayItem) => item.url === arrayItem.url
+            );
             return (
               <NewsCard
-                key={item._id}
+                key={item.url}
                 item={item}
                 handleLoginClick={handleLoginClick}
-                handleLikeItem={handleLikeItem}
+                handleSaveItem={handleSaveItem}
+                handleRemoveSave={handleRemoveSave}
                 searchResults={searchResults}
               />
             );

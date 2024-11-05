@@ -14,12 +14,11 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import LoginForm from "../LoginForm/LoginForm.jsx";
 import RegisterForm from "../RegisterForm/Registerform.jsx";
 import InfoPopup from "../InfoPopup/InfoPopup.jsx";
-import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader.jsx";
 import SavedNews from "../SavedNews/SavedNews.jsx";
 import MobileMenu from "../MobileMenu/MobileMenu.jsx";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext.jsx";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext.jsx";
-// import { defaultNewsItems } from "../../utils/constants";
+import { deleteItem, saveItem, getSavedItems } from "../../utils/api.js";
 import { getNews } from "../../utils/newsApi.js";
 import "./App.css";
 
@@ -30,7 +29,8 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [keyword, setKeyword] = useState("");
-  const [likedItems, setLikedItems] = useState([]);
+  const [savedItems, setSavedItems] = useState([]);
+  const [searchError, setSearchError] = useState(false);
 
   const handleLogin = ({ email, password }) => {
     console.log(activeModal);
@@ -57,10 +57,10 @@ function App() {
     getNews(keyword)
       .then((res) => {
         setSearchResults(res.articles);
-        console.log(searchResults);
       })
       .catch((err) => {
         console.error("Failed to perform search", err);
+        setSearchError(true);
       })
       .finally(() => setIsLoading(false));
   }, [isLoading]);
@@ -77,23 +77,50 @@ function App() {
     setActiveModal("menu");
   };
 
-  const handleLikeItem = (item) => {
-    item.isLiked = !item.isLiked;
-    if (item.isLiked && !likedItems.includes(item)) {
-      item.keyword = keyword;
-      setLikedItems([item, ...likedItems]);
-    } else if (!item.isLiked && likedItems.includes(item)) {
-      handleRemoveLike(item);
+  function isItemInArray(item, array) {
+    return array.some((arrayItem) => item.url === arrayItem.url);
+  }
+
+  const handleSaveItem = (item) => {
+    item.isSaved = !item.isSaved;
+    item.keyword = keyword;
+    isItemInArray(item, savedItems)
+      ? console.log("Item already saved")
+      : saveItem(item).then((card) => {
+          item._id = card._id;
+          setSavedItems([card, ...savedItems]);
+          console.log("success");
+        });
+    if (item.isSaved && !savedItems.includes(item)) {
+      setSavedItems([item, ...savedItems]);
     }
   };
 
-  const handleRemoveLike = (card) => {
-    setLikedItems(
-      likedItems.filter((item) => {
-        return item !== card;
+  const handleRemoveSave = (item) => {
+    deleteItem(item)
+      .then(() => {
+        setSavedItems(
+          savedItems.filter((card) => {
+            return card.url !== item.url;
+          })
+        );
       })
-    );
+      .catch((err) => {
+        console.error("Failed to delete news item", err);
+      });
+    item.isSaved = false;
   };
+
+  useEffect(() => {
+    if (currentPage === "home") return;
+    getSavedItems()
+      .then((items) => {
+        setSavedItems(items);
+      })
+      .catch((err) => {
+        console.error("Failed to receive saved news items");
+      });
+  }, [currentPage, savedItems.length]);
 
   const onLogout = () => {
     // localStorage.removeItem("jwt");
@@ -156,10 +183,13 @@ function App() {
                     />
                     <Main
                       handleLoginClick={handleLoginClick}
-                      handleLikeItem={handleLikeItem}
+                      handleSaveItem={handleSaveItem}
+                      handleRemoveSave={handleRemoveSave}
                       searchResults={searchResults}
                       keyword={keyword}
                       isLoading={isLoading}
+                      searchError={searchError}
+                      savedItems={savedItems}
                     />
                   </>
                 }
@@ -171,8 +201,8 @@ function App() {
                   <ProtectedRoute>
                     <SavedNews
                       onLogout={onLogout}
-                      likedItems={likedItems}
-                      handleRemoveLike={handleRemoveLike}
+                      savedItems={savedItems}
+                      handleRemoveSave={handleRemoveSave}
                       handleMenuClick={handleMenuClick}
                       isOpen={activeModal !== ""}
                     />

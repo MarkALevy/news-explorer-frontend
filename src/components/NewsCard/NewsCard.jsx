@@ -3,33 +3,17 @@ import { useContext, useEffect, useState } from "react";
 import "./NewsCard.css";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
-
-//////////////////////////Temporary ////////////////////////
-import image1 from "../../assets/temp/image_01.png";
-import image2 from "../../assets/temp/image_02.png";
-import image3 from "../../assets/temp/image_03.png";
-import image4 from "../../assets/temp/image_04.png";
-import image5 from "../../assets/temp/image_05.png";
-////////////////////////////////////////////////////////////
+import SearchResults from "../SearchResults/SearchResults";
 
 function NewsCard({
   handleLoginClick,
-  searchResults,
   item,
-  handleLikeItem,
-  handleRemoveLike,
+  handleSaveItem,
+  handleRemoveSave,
+  searchResults,
 }) {
   const isLoggedIn = useContext(IsLoggedInContext);
   const currentPage = useContext(CurrentPageContext);
-  const [isClicked, setIsClicked] = useState(false);
-
-  const card = item;
-  const images = [image1, image2, image3, image4, image5];
-
-  const onLike = () => {
-    handleLikeItem(item);
-    // item.isLiked = !item.isLiked;
-  };
 
   const fixDate = (iso) => {
     const split = iso.split(/\D+/);
@@ -40,9 +24,13 @@ function NewsCard({
     return `${month} ${day}, ${year}`;
   };
 
+  const onSave = () => {
+    handleSaveItem(item);
+  };
+
   const onRemove = () => {
-    handleRemoveLike(item);
-    item.isLiked = false;
+    handleRemoveSave(item);
+    item.isSaved = false;
   };
 
   return (
@@ -52,11 +40,11 @@ function NewsCard({
           currentPage === "home" ? (
             <button
               className={`${
-                item.isLiked
+                item.isSaved
                   ? "card__save-btn card__save-btn_checked"
                   : "card__save-btn card__save-btn_unchecked"
               } `}
-              onClick={onLike}
+              onClick={item.isSaved ? onRemove : onSave}
             ></button>
           ) : (
             <>
@@ -87,7 +75,7 @@ function NewsCard({
         <div className="card__text">
           <p className="card__date">{fixDate(item.publishedAt)}</p>
           <p className="card__title">{item.title}</p>
-          <p className="card__preview">{item.description}</p>
+          <p className="card__preview">{item.content}</p>
         </div>
         <p className="card__source">{item.source.name.toUpperCase()}</p>
       </div>

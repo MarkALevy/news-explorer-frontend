@@ -1,5 +1,6 @@
 import { request } from "./api";
-import { baseUrl, from, to, pageSize, apiKey } from "./constants";
+import { from, to, pageSize, apiKey } from "./constants";
+const baseUrl = "https://nomoreparties.co/news/v2/everything?";
 
 export const getNews = (q) => {
   return request(

@@ -7,22 +7,27 @@ import Preloader from "../Preloader/Preloader";
 
 function Main({
   handleLoginClick,
-  handleLikeItem,
+  handleSaveItem,
   searchResults,
   keyword,
   isLoading,
+  searchError,
+  handleRemoveSave,
+  savedItems,
 }) {
   return (
     <main>
       {isLoading && <Preloader />}
       {searchResults.length === 0 && keyword !== "" && !isLoading && (
-        <NothingFound />
+        <NothingFound searchError={searchError} />
       )}
       {searchResults.length !== 0 && keyword !== "" && !isLoading && (
         <SearchResults
           handleLoginClick={handleLoginClick}
-          handleLikeItem={handleLikeItem}
+          handleSaveItem={handleSaveItem}
           searchResults={searchResults}
+          handleRemoveSave={handleRemoveSave}
+          savedItems={savedItems}
         />
       )}
       <About />

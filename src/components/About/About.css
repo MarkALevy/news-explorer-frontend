@@ -6,8 +6,9 @@
   gap: 56px;
 }
 .about__img {
-  height: 464px;
-  width: 464px;
+  /* height: 464px; */
+  width: 33%;
+  min-width: 232px;
   border-radius: 1000px;
 }
 

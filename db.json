@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "_id": 1,
+      "email": "elise@gmail.com",
+      "userName": "Elise"
+    }
+  ],
+  "articles": []
+}

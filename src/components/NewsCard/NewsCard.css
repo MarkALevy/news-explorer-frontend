@@ -10,7 +10,8 @@
 }
 
 .card__header {
-  width: 352px;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   padding: 24px;
   position: absolute;

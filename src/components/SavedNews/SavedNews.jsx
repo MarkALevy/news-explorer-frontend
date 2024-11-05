@@ -1,42 +1,39 @@
 import NewsCard from "../NewsCard/NewsCard";
 import { useEffect } from "react";
-// import { defaultNewsItems } from "../../utils/constants";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
 import "./SavedNews.css";
 
 function SavedNews({
   onLogout,
-  likedItems,
-  handleRemoveLike,
+  savedItems,
+  handleRemoveSave,
   handleMenuClick,
   isOpen,
   searchResults,
 }) {
   const keywords = [];
 
-  likedItems.map((item) => {
+  savedItems.map((item) => {
     if (!keywords.includes(item.keyword)) keywords.push(item.keyword);
   });
-  console.log(keywords);
 
   return (
     <div className="saved-news__container">
       <SavedNewsHeader
         onLogout={onLogout}
-        totalLiked={likedItems.length}
+        totalSaved={savedItems.length}
         keywords={keywords}
         handleMenuClick={handleMenuClick}
         isOpen={isOpen}
       />
       <ul className="saved-news__list">
-        {likedItems.map((item) => {
+        {savedItems.map((item) => {
           return (
             <NewsCard
-              key={item._id}
+              key={item.url}
               item={item}
-              searchResults={searchResults}
-              handleRemoveLike={handleRemoveLike}
+              handleRemoveSave={handleRemoveSave}
             />
           );
         })}
