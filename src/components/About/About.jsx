@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import Avatar from "../../assets/About.jpg";
+import Avatar from "../../assets/about.jpg";
 function About() {
   return (
     <section className="about">
