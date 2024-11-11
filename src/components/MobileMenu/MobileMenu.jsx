@@ -4,9 +4,14 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
 function MobileMenu({ isOpen, onClose, handleLoginClick, onLogout }) {
   const isLoggedIn = useContext(IsLoggedInContext);
   const currentPage = useContext(CurrentPageContext);
+  const currentUser = useContext(CurrentUserContext);
+  const userName = currentUser?.name;
+
   return (
     <div className={`modal menu ${isOpen && "modal_opened"}`}>
       <div
@@ -61,7 +66,7 @@ function MobileMenu({ isOpen, onClose, handleLoginClick, onLogout }) {
                 <p
                   className={`menu__current-user_name menu__current-user_name_${currentPage} `}
                 >
-                  Elise
+                  {userName}
                 </p>
                 <div
                   className={`menu__current-user_name_signout menu__current-user_name_signout_${currentPage}`}

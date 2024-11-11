@@ -1,29 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { useFormWithValidation } from "../../utils/useFormWithValidation";
 
-function RegisterForm({ onClose, isOpen, onSubmit, handleLoginClick }) {
-  const [email, setEmail] = useState("");
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+function RegisterForm({
+  onClose,
+  isOpen,
+  onSubmit,
+  handleLoginClick,
+  serverError,
+  setServerError,
+}) {
+  // const [email, setEmail] = useState("");
+  // const handleEmailChange = (e) => {
+  //   setEmail(e.target.value);
+  // };
+  // const [password, setPassword] = useState("");
+  // const handlePasswordChange = (e) => {
+  //   setPassword(e.target.value);
+  // };
+  // const [name, setName] = useState("");
+  // const handleNameChange = (e) => {
+  //   setName(e.target.value);
+  // };
+
+  const inputValues = {
+    email: "",
+    password: "",
+    name: "",
   };
-  const [password, setPassword] = useState("");
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-  const [name, setName] = useState("");
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
+
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormWithValidation(inputValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ email, password, name });
+    onSubmit(values);
   };
   const handleClickOr = (e) => {
     e.preventDefault();
     handleLoginClick();
   };
-  
+
+  useEffect(() => {
+    resetForm(inputValues);
+    setServerError({});
+  }, [isOpen]);
+
   return (
     <PopupWithForm
       buttonText="Sign Up"
@@ -33,6 +55,8 @@ function RegisterForm({ onClose, isOpen, onSubmit, handleLoginClick }) {
       onSubmit={handleSubmit}
       orText="Sign in"
       onClickOr={handleClickOr}
+      isValid={isValid}
+      serverError={serverError}
     >
       <label htmlFor="email" className="modal__label">
         Email
@@ -42,15 +66,15 @@ function RegisterForm({ onClose, isOpen, onSubmit, handleLoginClick }) {
           id="email"
           name="email"
           placeholder="Email"
-          onChange={handleEmailChange}
-          value={email}
+          onChange={handleChange}
+          value={values.email}
           required
         />
         <span
           className="modal__input-error modal__input-error_visible"
           id="email-error"
         >
-          email error message
+          {errors.email}
         </span>
       </label>
       <label htmlFor="password" className="modal__label">
@@ -61,12 +85,12 @@ function RegisterForm({ onClose, isOpen, onSubmit, handleLoginClick }) {
           id="password"
           name="password"
           placeholder="Password"
-          onChange={handlePasswordChange}
-          value={password}
+          onChange={handleChange}
+          value={values.password}
           required
         />
         <span className="modal__input-error" id="password-error">
-          password error message
+          {errors.password}
         </span>
       </label>
       <label htmlFor="name" className="modal__label">
@@ -77,12 +101,12 @@ function RegisterForm({ onClose, isOpen, onSubmit, handleLoginClick }) {
           id="name"
           name="name"
           placeholder="Name"
-          onChange={handleNameChange}
-          value={name}
+          onChange={handleChange}
+          value={values.name}
           required
         />
         <span className="modal__input-error" id="name-error">
-          name error message
+          {errors.name}
         </span>
       </label>
     </PopupWithForm>

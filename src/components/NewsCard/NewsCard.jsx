@@ -75,7 +75,7 @@ function NewsCard({
         <div className="card__text">
           <p className="card__date">{fixDate(item.publishedAt)}</p>
           <p className="card__title">{item.title}</p>
-          <p className="card__preview">{item.content}</p>
+          <p className="card__preview">{item.description}</p>
         </div>
         <p className="card__source">{item.source.name.toUpperCase()}</p>
       </div>
