@@ -26,4 +26,4 @@ the App integrates with an open source news API at [https://newsapi.org]
 - Authentication and validation - both frontend and backend
 
 the website was deployed using google cloud at the following domain:
-[news-explorer.serverpit.com](news-explorer.serverpit.com)
+[https://news-explorer.serverpit.com](https://news-explorer.serverpit.com)
