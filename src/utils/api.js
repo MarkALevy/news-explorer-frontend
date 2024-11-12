@@ -56,11 +56,12 @@ export function deleteItem(item, token) {
   });
 }
 
-export function getSavedItems() {
+export function getSavedItems(token) {
   return request(`${baseUrl}/articles`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   });
 }

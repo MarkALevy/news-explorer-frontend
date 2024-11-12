@@ -32,6 +32,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedInLoading, setIsLoggedInLoading] = useState(true);
   const [keyword, setKeyword] = useState("");
   const [savedItems, setSavedItems] = useState([]);
   const [searchError, setSearchError] = useState(false);
@@ -130,7 +131,7 @@ function App() {
           .then((card) => {
             item._id = card.data._id;
             setSavedItems([card.data, ...savedItems]);
-            console.log("success");
+            console.log("Article saved");
           })
           .catch((err) => {
             console.error("Failed to save article", err);
@@ -154,17 +155,6 @@ function App() {
       });
     item.isSaved = false;
   };
-
-  useEffect(() => {
-    if (currentPage === "home") return;
-    getSavedItems()
-      .then((items) => {
-        setSavedItems(items.data);
-      })
-      .catch((err) => {
-        console.error("Failed to receive saved news items");
-      });
-  }, [currentPage, savedItems.length]);
 
   const onLogout = () => {
     localStorage.removeItem("jwt");
@@ -195,10 +185,18 @@ function App() {
           name: res.data.name,
           _id: res.data._id,
         });
+        getSavedItems(token)
+          .then((items) => {
+            setSavedItems(items.data.reverse());
+          })
+          .catch((err) => {
+            console.error("Failed to receive saved news items");
+          });
       })
       .catch((err) => {
         console.error("Authorization failed", err);
-      });
+      })
+      .finally(() => setIsLoggedInLoading(false));
   }, []);
 
   useEffect(() => {
@@ -262,7 +260,7 @@ function App() {
                 <Route
                   path="/saved-news"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute isLoggedInLoading={isLoggedInLoading}>
                       <SavedNews
                         onLogout={onLogout}
                         savedItems={savedItems}

@@ -10,16 +10,6 @@ function LoginForm({
   serverError,
   setServerError,
 }) {
-  // const [email, setEmail] = useState("");
-
-  // const handleEmailChange = (e) => {
-  //   setEmail(e.target.value);
-  // };
-  // const [password, setPassword] = useState("");
-  // const handlePasswordChange = (e) => {
-  //   setPassword(e.target.value);
-  // };
-
   const inputValues = {
     email: "",
     password: "",

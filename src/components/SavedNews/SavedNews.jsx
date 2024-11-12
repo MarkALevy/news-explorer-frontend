@@ -17,9 +17,6 @@ function SavedNews({
 }) {
   const keywords = [];
   const currentUser = useContext(CurrentUserContext);
-
-  console.log(savedItems);
-
   savedItems
     .filter((item) => {
       return item.owner === currentUser._id;
