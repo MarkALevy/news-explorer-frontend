@@ -64,10 +64,11 @@ function App() {
     auth
       .register({ email, password, name })
       .then((res) => {
-        setIsLoggedIn(true);
-        localStorage.setItem("jwt", res.token);
-        setCurrentUser({ name: res.name, _id: res._id });
-        closeActiveModal();
+        // setIsLoggedIn(true);
+        // localStorage.setItem("jwt", res.token);
+        // setCurrentUser({ name: res.name, _id: res._id });
+        // closeActiveModal();
+        setActiveModal("success");
       })
       .catch((err) => {
         setServerError({
