@@ -49,7 +49,7 @@ function App() {
         setIsLoggedIn(true);
         localStorage.setItem("jwt", res.token);
         setCurrentUser({ name: res.name, _id: res._id });
-        navigate("/saved-news");
+
         closeActiveModal();
       })
       .catch((err) => {
