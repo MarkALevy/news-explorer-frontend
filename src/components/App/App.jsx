@@ -49,7 +49,6 @@ function App() {
         setIsLoggedIn(true);
         localStorage.setItem("jwt", res.token);
         setCurrentUser({ name: res.name, _id: res._id });
-
         closeActiveModal();
       })
       .catch((err) => {
@@ -197,7 +196,7 @@ function App() {
         console.error("Authorization failed", err);
       })
       .finally(() => setIsLoggedInLoading(false));
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (!activeModal) return;
