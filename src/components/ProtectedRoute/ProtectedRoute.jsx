@@ -3,9 +3,9 @@ import { Navigate } from "react-router-dom";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";
 import { useContext } from "react";
 
-function ProtectedRoute({ children, isLoggedInLoading }) {
+function ProtectedRoute({ children, setActiveModal }) {
   const isLoggedIn = useContext(IsLoggedInContext);
-  if (isLoggedInLoading) return null;
+
   if (!isLoggedIn) {
     return <Navigate to="/" replace />;
   }

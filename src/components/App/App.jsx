@@ -32,7 +32,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedInLoading, setIsLoggedInLoading] = useState(true);
+
   const [keyword, setKeyword] = useState("");
   const [savedItems, setSavedItems] = useState([]);
   const [searchError, setSearchError] = useState(false);
@@ -194,8 +194,7 @@ function App() {
       })
       .catch((err) => {
         console.error("Authorization failed", err);
-      })
-      .finally(() => setIsLoggedInLoading(false));
+      });
   }, [isLoggedIn]);
 
   useEffect(() => {
@@ -259,7 +258,7 @@ function App() {
                 <Route
                   path="/saved-news"
                   element={
-                    <ProtectedRoute isLoggedInLoading={isLoggedInLoading}>
+                    <ProtectedRoute setActiveModal={setActiveModal}>
                       <SavedNews
                         onLogout={onLogout}
                         savedItems={savedItems}
