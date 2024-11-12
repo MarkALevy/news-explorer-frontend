@@ -4,8 +4,6 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import { useState } from "react";
 
 function SearchResults({
-  isLoggedIn,
-  currentPage,
   handleLoginClick,
   handleSaveItem,
   searchResults,

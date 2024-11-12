@@ -104,7 +104,7 @@ function App() {
         setSearchError(true);
       })
       .finally(() => setIsLoading(false));
-  }, [isLoading]);
+  }, [isLoading, savedItems.length]);
 
   const handleRegisterClick = () => {
     setActiveModal("register");
