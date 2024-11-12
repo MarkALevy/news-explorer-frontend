@@ -16,19 +16,24 @@ function NewsCardList({
       <ul className="cards__list">
         {searchResults
           .map((item) => {
-            item.isSaved = savedItems.some(
-              (arrayItem) => item.url === arrayItem.url
-            );
-            return (
-              <NewsCard
-                key={item.url}
-                item={item}
-                handleLoginClick={handleLoginClick}
-                handleSaveItem={handleSaveItem}
-                handleRemoveSave={handleRemoveSave}
-                searchResults={searchResults}
-              />
-            );
+            item.isSaved = savedItems.some((arrayItem) => {
+              if (item.url === arrayItem.url) {
+                item._id = arrayItem._id;
+                return true;
+              }
+              return false;
+            });
+            if (item.isSaved)
+              return (
+                <NewsCard
+                  key={item.url}
+                  item={item}
+                  handleLoginClick={handleLoginClick}
+                  handleSaveItem={handleSaveItem}
+                  handleRemoveSave={handleRemoveSave}
+                  searchResults={searchResults}
+                />
+              );
           })
           .slice(0, numResults)}
       </ul>
