@@ -16,4 +16,4 @@ export const pageSize = 100;
 export const baseUrl =
   process.env.NODE_ENV === "production"
     ? "https://api.news-explorer.serverpit.com"
-    : "http://localhost:3001";
+    : "http://localhost:3002";
