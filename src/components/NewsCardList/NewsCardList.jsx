@@ -16,9 +16,12 @@ function NewsCardList({
       <ul className="cards__list">
         {searchResults
           .map((item) => {
-            item.isSaved = savedItems.some(
-              (arrayItem) => item.url === arrayItem.url
-            );
+            savedItems.forEach((arrayItem) => {
+              if (item.url === arrayItem.url) {
+                item._id = arrayItem._id;
+                item.isSaved = true;
+              }
+            });
             return (
               <NewsCard
                 key={item.url}

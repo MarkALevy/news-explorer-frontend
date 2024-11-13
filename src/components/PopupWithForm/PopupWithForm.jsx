@@ -9,6 +9,8 @@ function PopupWithForm({
   onSubmit,
   orText,
   onClickOr,
+  isValid,
+  serverError,
 }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
@@ -18,9 +20,13 @@ function PopupWithForm({
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
           <span className="modal__error modal__error_visible">
-            error message example
+            {serverError}
           </span>
-          <button type="submit" className="modal__submit ">
+          <button
+            type="submit"
+            className={`modal__submit ${isValid ? "" : "modal__submit_disabled"}`}
+            disabled={!isValid}
+          >
             {buttonText}
           </button>
           <span className="modal__span">

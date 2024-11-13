@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { IsLoggedInContext } from "../../contexts/IsLoggedInContext";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./Navigation.css";
 function Navigation({ isOpen, handleLoginClick, onLogout, handleMenuClick }) {
   const isLoggedIn = useContext(IsLoggedInContext);
   const currentPage = useContext(CurrentPageContext);
+  const currentUser = useContext(CurrentUserContext);
+  const userName = currentUser?.name;
   return (
     <nav className={`nav nav_${currentPage} nav__modal_${isOpen}`}>
       <Link to="/" className="nav__sitename_link">
@@ -44,7 +47,7 @@ function Navigation({ isOpen, handleLoginClick, onLogout, handleMenuClick }) {
               <p
                 className={`nav__current-user_name nav__current-user_name_${currentPage} `}
               >
-                Elise
+                {userName}
               </p>
               <div
                 className={`nav__current-user_name_signout nav__current-user_name_signout_${currentPage}`}

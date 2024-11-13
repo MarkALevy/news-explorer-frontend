@@ -1,4 +1,7 @@
 import NewsCard from "../NewsCard/NewsCard";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
 import { useEffect } from "react";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
@@ -13,30 +16,42 @@ function SavedNews({
   searchResults,
 }) {
   const keywords = [];
-
-  savedItems.map((item) => {
-    if (!keywords.includes(item.keyword)) keywords.push(item.keyword);
-  });
+  const currentUser = useContext(CurrentUserContext);
+  savedItems
+    .filter((item) => {
+      return item.owner === currentUser._id;
+    })
+    .map((item) => {
+      if (!keywords.includes(item.keyword)) keywords.push(item.keyword);
+    });
 
   return (
     <div className="saved-news__container">
       <SavedNewsHeader
         onLogout={onLogout}
-        totalSaved={savedItems.length}
+        totalSaved={
+          savedItems.filter((item) => {
+            return item.owner === currentUser._id;
+          }).length
+        }
         keywords={keywords}
         handleMenuClick={handleMenuClick}
         isOpen={isOpen}
       />
       <ul className="saved-news__list">
-        {savedItems.map((item) => {
-          return (
-            <NewsCard
-              key={item.url}
-              item={item}
-              handleRemoveSave={handleRemoveSave}
-            />
-          );
-        })}
+        {savedItems
+          .filter((item) => {
+            return item.owner === currentUser._id;
+          })
+          .map((item) => {
+            return (
+              <NewsCard
+                key={item.url}
+                item={item}
+                handleRemoveSave={handleRemoveSave}
+              />
+            );
+          })}
       </ul>
     </div>
   );

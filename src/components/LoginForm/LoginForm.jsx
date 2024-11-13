@@ -1,33 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-function LoginForm({ onClose, isOpen, onSubmit, handleRegisterClick }) {
-  const [email, setEmail] = useState("");
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+function LoginForm({
+  onClose,
+  isOpen,
+  onSubmit,
+  handleRegisterClick,
+  serverError,
+  setServerError,
+}) {
+  const inputValues = {
+    email: "",
+    password: "",
   };
-  const [password, setPassword] = useState("");
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormWithValidation(inputValues);
+
   const handleClickOr = (e) => {
     e.preventDefault();
     handleRegisterClick();
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ email, password });
+    onSubmit(values);
   };
+
+  useEffect(() => {
+    resetForm(inputValues);
+    setServerError({});
+  }, [isOpen]);
 
   return (
     <PopupWithForm
-      buttonText="Sign in"
-      title="Sign in"
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit}
+      title="Sign in"
       orText="Sign up"
       onClickOr={handleClickOr}
+      buttonText="Sign in"
+      onSubmit={handleSubmit}
+      isValid={isValid}
+      serverError={serverError}
     >
       <label htmlFor="email" className="modal__label">
         Email
@@ -37,12 +52,12 @@ function LoginForm({ onClose, isOpen, onSubmit, handleRegisterClick }) {
           id="email"
           name="email"
           placeholder="Enter email"
-          onChange={handleEmailChange}
-          value={email}
+          onChange={handleChange}
+          value={values.email}
           required
         />
         <span className="modal__input-error " id="email-error">
-          email error message
+          {errors.email}
         </span>
       </label>
       <label htmlFor="password" className="modal__label">
@@ -53,15 +68,12 @@ function LoginForm({ onClose, isOpen, onSubmit, handleRegisterClick }) {
           id="password"
           name="password"
           placeholder="Enter password"
-          onChange={handlePasswordChange}
-          value={password}
+          onChange={handleChange}
+          value={values.password}
           required
         />
-        <span
-          className="modal__input-error modal__input-error_visible"
-          id="password-error"
-        >
-          password error message
+        <span className="modal__input-error" id="password-error">
+          {errors.password}
         </span>
       </label>
     </PopupWithForm>

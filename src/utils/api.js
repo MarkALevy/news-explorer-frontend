@@ -1,4 +1,4 @@
-import { baseUrl, headers } from "./constants";
+import { baseUrl } from "./constants";
 
 function _handleRes(res) {
   if (res.ok) {
@@ -10,24 +10,27 @@ export function request(url, options) {
   return fetch(url, options).then(_handleRes);
 }
 
-export function saveItem({
-  author,
-  content,
-  description,
-  keyword,
-  publishedAt,
-  source,
-  title,
-  url,
-  urlToImage,
-  isSaved,
-}) {
+export function saveItem(
+  {
+    description,
+    keyword,
+    publishedAt,
+    source,
+    title,
+    url,
+    urlToImage,
+    isSaved,
+    owner,
+  },
+  token
+) {
   return request(`${baseUrl}/articles`, {
     method: "POST",
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify({
-      author: author,
-      content: content,
       description: description,
       keyword: keyword,
       publishedAt: publishedAt,
@@ -36,22 +39,29 @@ export function saveItem({
       url: url,
       urlToImage: urlToImage,
       isSaved: isSaved,
+      owner: owner,
     }),
   }).then((data) => {
     return data;
   });
 }
 
-export function deleteItem(item) {
+export function deleteItem(item, token) {
   return request(`${baseUrl}/articles/${item._id}`, {
     method: "DELETE",
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   });
 }
 
-export function getSavedItems() {
+export function getSavedItems(token) {
   return request(`${baseUrl}/articles`, {
     method: "GET",
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   });
 }
