@@ -8,12 +8,22 @@ function About() {
       <div className="about__text">
         <h2 className="about__title">About the author</h2>
         <p className="about__description">
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know.{" "}
+          A highly motivated Full Stack Developer with a BSc in Applied
+          Mathematics and an MBA specializing in Information Systems.
         </p>
         <p className="about__description">
-          You can also talk about your experience with TripleTen, what you
-          learned there, and how you can help potential customers.
+          {" "}
+          My 14 years of experience as an Intelligence Officer in the IDF honed
+          my analytical and problem-solving abilities, enabling me to tackle
+          complex challenges with a strategic approach. I'm adept at leading
+          teams, managing multiple projects, and delivering results under tight
+          deadlines.
+        </p>
+        <p className="about__description">
+          I'm proficient in building robust and scalable web applications using
+          modern technologies, with a strong foundation in MERN. I'm passionate
+          about crafting user-centric solutions and continuously seeking
+          opportunities to learn and grow.
         </p>
       </div>
     </section>
