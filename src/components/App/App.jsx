@@ -12,7 +12,7 @@ import Main from "../Main/Main.jsx";
 import Footer from "../Footer/Footer.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import LoginForm from "../LoginForm/LoginForm.jsx";
-import RegisterForm from "../RegisterForm/RegisterForm.jsx";
+import RegisterForm from "../RegisterForm/Registerform.jsx";
 import InfoPopup from "../InfoPopup/InfoPopup.jsx";
 import SavedNews from "../SavedNews/SavedNews.jsx";
 import MobileMenu from "../MobileMenu/MobileMenu.jsx";
